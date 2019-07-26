@@ -1,4 +1,4 @@
-package com.example.pst4_entregas_a_domicilio;
+package com.pst.SuperShop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
