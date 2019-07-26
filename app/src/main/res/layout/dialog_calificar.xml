@@ -92,7 +92,7 @@
             android:layout_height="match_parent"
             android:background="@color/grey_3"
             android:gravity="top"
-            android:hint="Comentarios ..."
+            android:hint="Write review ..."
             android:lines="4"
             android:padding="@dimen/spacing_middle" />
 
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="CANCELAR" />
+            android:text="CANCEL" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_submit"
@@ -123,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="ENVIAR" />
+            android:text="SUBMIT" />
 
     </LinearLayout>
 
