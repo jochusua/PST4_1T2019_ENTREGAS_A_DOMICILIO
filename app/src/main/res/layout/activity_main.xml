@@ -38,7 +38,7 @@
             app:srcCompat="@drawable/vengadores_login" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/l_usuario"
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:ems="10"
@@ -46,7 +46,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/l_contraseña"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             android:ems="10"
@@ -65,6 +65,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="FRegistro"
             android:text="Registrarse" />
     </LinearLayout>
 

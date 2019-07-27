@@ -19,7 +19,7 @@
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editusuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,7 +30,7 @@
         />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editnombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -39,7 +39,7 @@
         android:lineSpacingExtra="10sp" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/editapellido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -48,7 +48,7 @@
         android:lineSpacingExtra="10sp" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/edittelefono"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:ems="10"
@@ -57,7 +57,7 @@
         android:lineSpacingExtra="10sp" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/editcontraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
