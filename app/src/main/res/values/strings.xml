@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PST4_Entregas_a_Domicilio</string>
+    <string name="title_activity_principal__cliente">Principal_Cliente</string>
+    <string name="title_home">Home</string>
+    <string name="title_ubicacion">Ubicación</string>
+    <string name="title_perfil">Perfil</string>
 </resources>
