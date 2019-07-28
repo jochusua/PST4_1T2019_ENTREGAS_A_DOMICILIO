@@ -8,4 +8,18 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_cliente">cliente</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Super Shop</string>
+    <string name="nav_header_subtitle">alopez@mail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Cerrar Sesión</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Ubicacion</string>
+    <string name="menu_slideshow">Perfil</string>
+    <string name="menu_tools">Pedidos</string>
+    <string name="menu_share">Repartidores</string>
+    <string name="menu_send">Send</string>
 </resources>

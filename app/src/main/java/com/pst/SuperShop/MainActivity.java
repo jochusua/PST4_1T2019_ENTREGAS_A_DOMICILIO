@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ingresoCliente(View view) {
-        Intent i = new Intent(this, Principal_Cliente.class );
+        Intent i = new Intent(this, cliente.class );
         startActivity(i);
     }
 
