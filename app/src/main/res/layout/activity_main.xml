@@ -55,14 +55,14 @@
             android:lineSpacingExtra="8sp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/blogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="ingresoCliente"
+            android:onClick="onClick"
             android:text="Ingresar" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/bregistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="FRegistro"
