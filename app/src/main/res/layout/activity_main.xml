@@ -48,11 +48,10 @@
         <EditText
             android:id="@+id/l_contraseña"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="69dp"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPersonName"
-            android:lineSpacingExtra="8sp" />
+            android:inputType="textPassword" />
 
         <Button
             android:id="@+id/blogin"
@@ -67,6 +66,7 @@
             android:layout_height="wrap_content"
             android:onClick="FRegistro"
             android:text="Registrarse" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

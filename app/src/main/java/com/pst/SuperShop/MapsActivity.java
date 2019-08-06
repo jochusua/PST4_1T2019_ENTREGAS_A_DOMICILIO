@@ -42,25 +42,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady ( GoogleMap googleMap ) {
-        Toast.makeText( this, "Map is Ready", Toast.LENGTH_SHORT ).show();
+        Toast.makeText( this, "Mapa cargado", Toast.LENGTH_SHORT ).show();
         Log.d( TAG, "onMapReady: map is ready" );
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        // Supermaxi
-        LatLng supermaxi = new LatLng(-2.176183, -79.943924);
+        //GeekStore
+        LatLng geekstore = new LatLng(-2.154969, -79.891575);
         mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
-        mMap.addMarker(new MarkerOptions().position(supermaxi).title("Supermaxi Riocentro Los Ceibos"));
+        mMap.addMarker(new MarkerOptions().position(geekstore).title("GeekStore Mall del Sol"));
 
-        // Mi Comisariato
-        LatLng miComisariato = new LatLng( -2.159314, -79.928052 );
-        mMap.addMarker( new MarkerOptions().position( miComisariato ).title( "Mi Comisariato Ceibos" ).icon( BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_VIOLET ) ) );
-        mMap.moveCamera( CameraUpdateFactory.newLatLng( miComisariato ) );
+        //Funko
+        LatLng funko = new LatLng( -2.109114, -79.948691 );
+        mMap.addMarker( new MarkerOptions().position( funko ).title( "Funko Mall El Fortin" ).icon( BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_VIOLET ) ) );
+        mMap.moveCamera( CameraUpdateFactory.newLatLng( funko ) );
 
-        // Tia
-        LatLng tia = new LatLng( -2.130187, -79.949231);
-        mMap.addMarker( new MarkerOptions().position( tia ).title( "Tia Lomas de la Florida" ).icon( BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_VIOLET ) ) );
-        mMap.moveCamera( CameraUpdateFactory.newLatLng( tia ) );
+        //Zacatrus
+        LatLng zacatrus = new LatLng( -2.228982, -79.898401);
+        mMap.addMarker( new MarkerOptions().position( zacatrus ).title( "Zacatrus Mall del Sur" ).icon( BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_VIOLET ) ) );
+        mMap.moveCamera( CameraUpdateFactory.newLatLng( zacatrus ) );
+
+        //GeekStore2
+        LatLng geekstore2 = new LatLng(-2.176001, -79.943634);
+        mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
+        mMap.addMarker(new MarkerOptions().position(geekstore2).title("GeekStore Riocentro Ceibos"));
 
         if (mLocationPermissionsGranted) {
             getDeviceLocation();
