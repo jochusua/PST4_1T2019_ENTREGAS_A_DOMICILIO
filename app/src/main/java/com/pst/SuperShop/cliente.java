@@ -24,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class cliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +36,8 @@ public class cliente extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        //Bundle bundle = getIntent().getExtras();
+        //bundle.getString("correo");
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +91,7 @@ public class cliente extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            finish();
             return true;
         }
 
@@ -135,9 +140,7 @@ public class cliente extends AppCompatActivity
                 });
         alert = builder.create();
         alert.show();
+
     }
 
-    public void cerrarSesion(View view) {
-        finish();
-    }
 }

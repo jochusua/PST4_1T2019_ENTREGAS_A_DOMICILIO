@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void loguearUsuario() {
+        //EditText correo = (EditText) findViewById(R.id.l_usuario);
+        //Intent i = new Intent(this, cliente.class );
+        //i.putExtra("correo", correo.getText().toString());
+        //startActivity(i);
         //Obtenemos el email y la contraseña desde las cajas de texto
         final String email = tusuario.getText().toString().trim();
         String password = tcontraseña.getText().toString().trim();
