@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //Intent intencion = new Intent(getApplication(), WellcomeActivity.class);
                             //intencion.putExtra(WellcomeActivity.user, user);
                             //startActivity(intencion);
-                            Intent i= new Intent(getApplication(), cliente.class );
+                            Intent i= new Intent(getApplication(), repartidorMain.class );
                             startActivity(i);
 
 
