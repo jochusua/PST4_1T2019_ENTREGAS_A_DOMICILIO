@@ -1,9 +1,9 @@
 package com.pst.SuperShop.models;
 
 public class Usuario {
-    public String uid;
-    public String email;
-    public String password;
+    private String uid;
+    private String email;
+    private String password;
 
     public Usuario() {
     }
