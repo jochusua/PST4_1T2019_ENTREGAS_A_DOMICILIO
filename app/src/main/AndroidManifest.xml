@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".geekStore" />
         <activity
-            android:name=".cliente"
+            android:name=".DrawerCliente"
             android:label="@string/title_activity_cliente"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Registro" />

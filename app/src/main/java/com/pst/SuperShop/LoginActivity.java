@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -225,7 +223,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             //Intent intencion = new Intent(getApplication(), WellcomeActivity.class);
                             //intencion.putExtra(WellcomeActivity.user, user);
                             //startActivity(intencion);
-                            Intent i= new Intent(getApplication(), cliente.class );
+                            Intent i= new Intent(getApplication(), DrawerCliente.class );
                             startActivity(i);
 
 

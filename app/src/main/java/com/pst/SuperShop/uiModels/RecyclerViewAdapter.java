@@ -13,6 +13,9 @@ import com.pst.SuperShop.models.ItemFromStore;
 
 import java.util.List;
 
+/**
+ * Un adapter para habilitar la multi selección, provee al contador un estado
+ */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
     private List<ItemFromStore> mItemFromStoreList;

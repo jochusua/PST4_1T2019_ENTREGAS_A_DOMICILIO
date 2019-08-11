@@ -15,9 +15,9 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="421dp"
-            android:layout_height="51dp"
+            android:id="@+id/emailTextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="SUPER SHOP"
             android:textAlignment="center"
             android:textSize="24sp" />
@@ -32,9 +32,9 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/profile_pic_view"
             android:layout_width="match_parent"
-            android:layout_height="235dp"
+            android:layout_height="230dp"
             app:srcCompat="@drawable/vengadores_login" />
 
         <EditText

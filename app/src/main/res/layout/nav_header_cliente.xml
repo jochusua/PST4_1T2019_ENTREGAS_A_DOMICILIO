@@ -13,24 +13,25 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="86dp"
-        android:layout_height="88dp"
+        android:id="@+id/profile_pic_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/nav_header_desc_cliente"
-        android:paddingTop="@dimen/nav_header_vertical_spacing_cliente"
-        app:srcCompat="@drawable/andreslopez" />
+        app:srcCompat="@drawable/photo_female_5" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing_cliente"
         android:text="@string/nav_header_title_cliente"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/black" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/emailTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle_cliente" />
+        android:text="@string/nav_header_subtitle_cliente"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

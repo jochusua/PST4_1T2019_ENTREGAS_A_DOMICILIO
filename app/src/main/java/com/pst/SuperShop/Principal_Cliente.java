@@ -28,7 +28,7 @@ public class Principal_Cliente extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    selectedFragment=new home();
+                    selectedFragment=new FragmentTiendas();
                     break;
                 case R.id.navigation_ubicacion:
                     //selectedFragment=new ubicacion();
@@ -36,7 +36,7 @@ public class Principal_Cliente extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 case R.id.navigation_perfil:
-                    selectedFragment=new perfil();
+                    selectedFragment=new FragmentPerfil();
                     break;
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
@@ -51,7 +51,7 @@ public class Principal_Cliente extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new home()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentTiendas()).commit();
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if ( !locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
             AlertNoGps();

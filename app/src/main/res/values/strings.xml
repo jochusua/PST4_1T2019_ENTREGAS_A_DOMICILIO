@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">PST4_Entregas_a_Domicilio</string>
-    <string name="title_activity_principal__cliente">Principal_Cliente</string>
+    <string name="app_name">SuperShop</string>
+    <string name="title_activity_principal__cliente">Just client</string>
     <string name="title_home">Home</string>
     <string name="title_ubicacion">Ubicación</string>
     <string name="title_perfil">Perfil</string>
@@ -8,16 +8,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello">Hello blank fragment</string>
-    <string name="title_activity_cliente">cliente</string>
+    <string name="title_activity_cliente">Tiendas</string>
     <string name="navigation_drawer_open_cliente">Open navigation drawer</string>
     <string name="navigation_drawer_close_cliente">Close navigation drawer</string>
-    <string name="nav_header_title_cliente">Super Shop</string>
+    <string name="nav_header_title_cliente">SuperShop</string>
     <string name="nav_header_subtitle_cliente">alopez@mail.com</string>
     <string name="nav_header_desc_cliente">Navigation header</string>
     <string name="action_settings_cliente">Cerrar Sesión</string>
 
-    <string name="menu_home_cliente">Home</string>
-    <string name="menu_gallery_cliente">Ubicacion</string>
+    <string name="menu_home_cliente">Tiendas</string>
+    <string name="menu_gallery_cliente">Ubicación</string>
     <string name="menu_slideshow_cliente">Perfil</string>
     <string name="menu_tools_cliente">Pedidos</string>
     <string name="menu_share_cliente">Repartidores</string>

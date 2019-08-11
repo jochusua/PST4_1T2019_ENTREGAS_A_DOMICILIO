@@ -16,10 +16,10 @@ import com.pst.SuperShop.uiModels.StoreActivity;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class home extends Fragment {
+public class FragmentTiendas extends Fragment {
 
 
-    public home() {
+    public FragmentTiendas() {
         // Required empty public constructor
     }
 
@@ -33,7 +33,7 @@ public class home extends Fragment {
         store1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(home.this.getActivity(), StoreActivity.class);
+                Intent intent = new Intent(FragmentTiendas.this.getActivity(), StoreActivity.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

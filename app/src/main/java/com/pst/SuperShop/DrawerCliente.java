@@ -25,14 +25,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class cliente extends AppCompatActivity
+public class DrawerCliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LocationManager locationManager;
     AlertDialog alert = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cliente);
+        setContentView(R.layout.activity_drawer_cliente);
         Toolbar toolbar = findViewById(R.id.toolbar);
         //Bundle bundle = getIntent().getExtras();
         //bundle.getString("correo");
@@ -54,7 +54,7 @@ public class cliente extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new home()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentTiendas()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -76,7 +76,7 @@ public class cliente extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.cliente, menu);
+        getMenuInflater().inflate(R.menu.menu_cliente, menu);
         return true;
     }
 
@@ -103,12 +103,12 @@ public class cliente extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new home()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentTiendas()).commit();
         } else if (id == R.id.nav_ubicacion) {
             Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_perfil) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new perfil()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentPerfil()).commit();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
