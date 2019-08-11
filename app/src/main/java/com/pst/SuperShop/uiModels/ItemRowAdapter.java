@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * Un adapter para habilitar la multi selección, provee al contador un estado
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class ItemRowAdapter extends RecyclerView.Adapter<ItemRowAdapter.MyViewHolder> {
 
     private List<ItemFromStore> mItemFromStoreList;
 
-    public RecyclerViewAdapter(List<ItemFromStore> itemFromStoreList) {
+    public ItemRowAdapter(List<ItemFromStore> itemFromStoreList) {
         mItemFromStoreList = itemFromStoreList;
     }
 
