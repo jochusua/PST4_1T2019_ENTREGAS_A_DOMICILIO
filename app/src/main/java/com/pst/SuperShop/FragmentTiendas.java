@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pst.SuperShop.models.StoreUnit;
 import com.pst.SuperShop.uiModels.StoreActivity;
 
@@ -27,11 +29,14 @@ public class FragmentTiendas extends Fragment {
     private List<StoreUnit> listStores = new ArrayList<StoreUnit>();
     ArrayAdapter<StoreUnit> arrayAdapterStoreUnit;
 
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
 
-    public FragmentTiendas() {
-        // Required empty public constructor
+
+    FragmentTiendas(FirebaseDatabase database, DatabaseReference reference) {
+        this.database = database;
+        this.reference = reference;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +44,6 @@ public class FragmentTiendas extends Fragment {
         // Inflate the layout for this fragment
         final View inputFragment = inflater.inflate(R.layout.fragment_home, container, false);
 
-        inicializarFirebase();
         final View store1 = inputFragment.findViewById(R.id.store1);
         store1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +57,6 @@ public class FragmentTiendas extends Fragment {
 
     }
 
-    private void inicializarFirebase() {
-
-    }
 
 
 }

@@ -17,6 +17,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,9 +32,11 @@ public class DrawerCliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LocationManager locationManager;
     AlertDialog alert = null;
+
     //Firbase variables
     FirebaseDatabase database;
     DatabaseReference reference;
+    private FragmentTiendas fragmentTiendas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +62,25 @@ public class DrawerCliente extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        // inicializar conexion firebase
+        inicializarFirebase();
+
+        fragmentTiendas = new FragmentTiendas(database, reference);
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new FragmentTiendas()).commit();
+                    fragmentTiendas).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if ( !locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
             AlertNoGps();
         }
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
     }
 
     @Override
@@ -110,7 +123,7 @@ public class DrawerCliente extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentTiendas()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentTiendas).commit();
         } else if (id == R.id.nav_ubicacion) {
             Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
             startActivity(intent);
