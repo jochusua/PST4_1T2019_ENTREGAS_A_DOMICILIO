@@ -43,6 +43,7 @@ dependencies {
     //para firebase
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.google.firebase:firebase-auth:18.1.0'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
 
     // another one
     implementation 'com.getbase:floatingactionbutton:1.10.1'
