@@ -17,6 +17,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -29,6 +31,10 @@ public class DrawerCliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LocationManager locationManager;
     AlertDialog alert = null;
+    //Firbase variables
+    FirebaseDatabase database;
+    DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +60,8 @@ public class DrawerCliente extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentTiendas()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new FragmentTiendas()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);

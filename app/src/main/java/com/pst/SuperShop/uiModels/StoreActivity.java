@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
-import com.pst.SuperShop.MainActivity;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.ItemFromStore;
 
@@ -22,7 +21,7 @@ public class StoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mAdapter = new RecyclerViewAdapter(getListData());
+        mAdapter = new ItemRowAdapter(getListData());
         LinearLayoutManager manager = new LinearLayoutManager(StoreActivity.this);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(manager);
