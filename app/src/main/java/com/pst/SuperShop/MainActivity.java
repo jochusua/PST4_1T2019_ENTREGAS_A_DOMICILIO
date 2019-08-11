@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.pst.SuperShop.uiModels.StoreActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //Intent intencion = new Intent(getApplication(), WellcomeActivity.class);
                             //intencion.putExtra(WellcomeActivity.user, user);
                             //startActivity(intencion);
-                            Intent i= new Intent(getApplication(), repartidorMain.class );
+                            Intent i= new Intent(getApplication(), cliente.class );
                             startActivity(i);
 
 

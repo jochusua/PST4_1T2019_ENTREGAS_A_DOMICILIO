@@ -43,7 +43,8 @@
             android:layout_height="68dp"
             android:ems="10"
             android:hint="Usuario"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:text="test1@espol.edu.ec" />
 
         <EditText
             android:id="@+id/l_contraseña"
@@ -51,7 +52,8 @@
             android:layout_height="69dp"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="mini123" />
 
         <Button
             android:id="@+id/blogin"

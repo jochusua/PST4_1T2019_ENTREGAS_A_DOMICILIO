@@ -31,7 +31,7 @@ public class StoreActivity extends AppCompatActivity {
     private List<ItemFromStore> getListData() {
         mItemFromStoreList = new ArrayList<>();
         for (int i = 1; i <= 25; i++) {
-            mItemFromStoreList.add(new ItemFromStore("TextView " + i,"Desc: "+i));
+            mItemFromStoreList.add(new ItemFromStore("Precio $ " + i,"Desc: "+i));
         }
         return mItemFromStoreList;
     }
