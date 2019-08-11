@@ -47,6 +47,10 @@ dependencies {
     // another one
     implementation 'com.getbase:floatingactionbutton:1.10.1'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    // google sign in feature
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-plus:17.0.0'
 }
 
 //para firebase
