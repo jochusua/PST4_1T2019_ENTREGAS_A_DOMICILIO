@@ -36,23 +36,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
+
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_height="wrap_content"
+            android:id="@+id/fab_shopping_cart"
             android:layout_width="wrap_content"
-            app:fab_colorNormal="@color/colorAccent"
-            app:fab_colorPressed="@color/colorAccentDark"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/amber_500"
+            app:fab_colorPressed="@color/amber_600"
             app:fab_icon="@drawable/ic_shopping_cart_black"
             app:fab_size="mini"
-            android:id="@+id/fab_shopping_cart"
-            app:fab_title="Add to shopping cart"
-            />
+            app:fab_title="Add to shopping cart" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             app:fab_colorNormal="@color/colorAccent"
             app:fab_colorPressed="@color/colorAccentDark"
-            app:fab_icon="@drawable/ic_shopping_cart_black"
+            app:fab_icon="@drawable/ic_add_black_24dp"
             app:fab_size="mini"
             android:id="@+id/fab_whishlist"
             app:fab_title="Add to whishlist"
