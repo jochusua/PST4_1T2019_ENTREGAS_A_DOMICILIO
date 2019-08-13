@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
+    // Permite al ususario agregar su nombre, apellido , telefono y contrasena
     EditText etusuario, etnombre, etapellido, ettelefono, etcontraseña;
     Button btnRegistrar;
 
