@@ -16,4 +16,11 @@
         android:layout_gravity="center"
         app:srcCompat="@color/light_blue_A400" />
 
+    <TextView
+        android:id="@+id/nombreTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Tienda" />
+
 </LinearLayout>

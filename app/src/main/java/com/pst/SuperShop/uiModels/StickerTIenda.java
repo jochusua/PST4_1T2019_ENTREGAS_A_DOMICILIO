@@ -2,7 +2,6 @@ package com.pst.SuperShop.uiModels;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +13,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pst.SuperShop.R;
-import com.pst.SuperShop.models.ItemFromStore;
-import com.pst.SuperShop.models.StoreUnit;
+import com.pst.SuperShop.models.DatosTienda;
 
 import java.io.InputStream;
 import java.util.List;
@@ -23,31 +21,31 @@ import java.util.List;
 /**
  * Un adapter para habilitar la multi selección, provee al contador un estado
  */
-public class StoreRowAdapter extends RecyclerView.Adapter<StoreRowAdapter.MyViewHolder> {
+public class StickerTIenda extends RecyclerView.Adapter<StickerTIenda.MyViewHolder> {
 
-    private List<StoreUnit> mItemFromStoreList;
+    private List<DatosTienda> mItemFromStoreList;
 
-    public StoreRowAdapter(List<StoreUnit> itemFromStoreList) {
+    public StickerTIenda(List<DatosTienda> itemFromStoreList) {
         mItemFromStoreList = itemFromStoreList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sticker_tienda, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        final StoreUnit storeUnit = mItemFromStoreList.get(position);
+        final DatosTienda datosTienda = mItemFromStoreList.get(position);
         //holder.storePhotoview.setImageURI("");
 
-        //holder.view.setBackgroundColor(storeUnit.isSelected() ? Color.CYAN : Color.WHITE);
+        //holder.view.setBackgroundColor(datosTienda.isSelected() ? Color.CYAN : Color.WHITE);
 //        holder.storePhotoview.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                storeUnit.setSelected(!storeUnit.isSelected());
-//                holder.view.setBackgroundColor(storeUnit.isSelected() ? Color.YELLOW : Color.WHITE);
+//                datosTienda.setSelected(!datosTienda.isSelected());
+//                holder.view.setBackgroundColor(datosTienda.isSelected() ? Color.YELLOW : Color.WHITE);
 //            }
 //        });
     }
@@ -61,14 +59,16 @@ public class StoreRowAdapter extends RecyclerView.Adapter<StoreRowAdapter.MyView
 
         private View view;
         private ImageView storePhotoview;
-        private TextView itemDescTextview;
+        private TextView nombre;
 
         private MyViewHolder(View itemView) {
             super(itemView);
             view = itemView;
+            // descarga en un "threading" la imagen, permitiendo que la ui no se cuelgue
             new DownloadImageTask((ImageView) itemView.findViewById(R.id.store_photoview))
                     .execute("http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");
-            storePhotoview = (ImageView) itemView.findViewById(R.id.store_photoview);
+            nombre = itemView.findViewById(R.id.nombreTV);
+
         }
     }
 

@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".uiModels.StoreActivity" />
+        <activity android:name=".uiModels.StockDeTiendaActivity" />
         <activity
             android:name=".repartidorMain"
             android:label="@string/title_activity_repartidor_main"

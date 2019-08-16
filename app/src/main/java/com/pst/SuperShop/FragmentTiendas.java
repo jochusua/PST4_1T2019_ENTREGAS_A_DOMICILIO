@@ -1,20 +1,27 @@
 package com.pst.SuperShop;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.pst.SuperShop.models.StoreUnit;
-import com.pst.SuperShop.uiModels.StoreActivity;
+import com.google.firebase.database.ValueEventListener;
+import com.pst.SuperShop.models.DatosTienda;
+import com.pst.SuperShop.uiModels.StickerTIenda;
+import com.pst.SuperShop.uiModels.StockDeTiendaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,16 +33,18 @@ import java.util.List;
 public class FragmentTiendas extends Fragment {
 
 
-    private List<StoreUnit> listStores = new ArrayList<StoreUnit>();
-    ArrayAdapter<StoreUnit> arrayAdapterStoreUnit;
+    private List<DatosTienda> listStores = new ArrayList<DatosTienda>();
+    ArrayAdapter<DatosTienda> arrayAdapterStoreUnit;
 
-    private FirebaseDatabase database;
-    private DatabaseReference reference;
+    //private FirebaseDatabase database;
+    private DatabaseReference refTiendas;
+    private Context context;
+    private RecyclerView rv_stores;
 
 
-    FragmentTiendas(FirebaseDatabase database, DatabaseReference reference) {
-        this.database = database;
-        this.reference = reference;
+    FragmentTiendas(FirebaseDatabase database, DatabaseReference refTiendas) {
+        //this.database = database;
+        this.refTiendas = refTiendas;
     }
 
     @Override
@@ -48,15 +57,37 @@ public class FragmentTiendas extends Fragment {
         store1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FragmentTiendas.this.getActivity(), StoreActivity.class);
+                Intent intent = new Intent(FragmentTiendas.this.getActivity(), StockDeTiendaActivity.class);
                 //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
+        listarTiendas();
+        context = getActivity().getApplicationContext();
         return inputFragment;
 
     }
 
+    private void listarTiendas() {
+        refTiendas.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listStores.clear();
+                for (DataSnapshot objSnapshot: dataSnapshot.getChildren()){
+                    DatosTienda su  = objSnapshot.getValue(DatosTienda.class);
+                    listStores.add(su);
+                    //stickerTienda = new StickerTIenda()
+                    //arrayAdapterStoreUnit = new ArrayAdapter<DatosTienda>(context,android.R.layout.simple_list_item_1,listStores);
+                    //rv_stores.setAdapter(arrayAdapterStoreUnit);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
 }
