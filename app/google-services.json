@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "609876464204-ntj0cmknf5lks8qek9q6bp4cdjndipbt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pst.SuperShop",
+            "certificate_hash": "78cee4cd7bc940cd0b8a7f5abb619d37f80090d9"
+          }
+        },
+        {
           "client_id": "609876464204-dsrdrhs79vmpb3aal5qu0677s9d6e6eq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
