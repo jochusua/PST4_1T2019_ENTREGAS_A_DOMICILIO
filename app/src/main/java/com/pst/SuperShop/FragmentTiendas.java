@@ -2,7 +2,6 @@ package com.pst.SuperShop;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,11 +16,9 @@ import android.widget.ArrayAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pst.SuperShop.models.DatosTienda;
-import com.pst.SuperShop.uiModels.StickerTIenda;
-import com.pst.SuperShop.uiModels.StockDeTiendaActivity;
+import com.pst.SuperShop.uiModels.StickerTienda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +37,10 @@ public class FragmentTiendas extends Fragment {
     private DatabaseReference refTiendas;
     private Context context;
     private RecyclerView rv_stores;
+    private StickerTienda stickerTienda;
 
 
-    FragmentTiendas(FirebaseDatabase database, DatabaseReference refTiendas) {
+    FragmentTiendas( DatabaseReference refTiendas) {
         //this.database = database;
         this.refTiendas = refTiendas;
     }
@@ -52,17 +50,11 @@ public class FragmentTiendas extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View inputFragment = inflater.inflate(R.layout.fragment_home, container, false);
-
-        final View store1 = inputFragment.findViewById(R.id.store1);
-        store1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(FragmentTiendas.this.getActivity(), StockDeTiendaActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+        // populate tiendas frome refTiendas
         listarTiendas();
+
+        // make each tienda open stockdetiendaactivity
+
         context = getActivity().getApplicationContext();
         return inputFragment;
 
@@ -72,14 +64,13 @@ public class FragmentTiendas extends Fragment {
         refTiendas.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listStores.clear();
-                for (DataSnapshot objSnapshot: dataSnapshot.getChildren()){
+                listStores.clear(); // para persistencia ?
+                for (DataSnapshot objSnapshot: dataSnapshot.getChildren()){ // recorre nodo tiendas
                     DatosTienda su  = objSnapshot.getValue(DatosTienda.class);
                     listStores.add(su);
-                    //stickerTienda = new StickerTIenda()
-                    //arrayAdapterStoreUnit = new ArrayAdapter<DatosTienda>(context,android.R.layout.simple_list_item_1,listStores);
-                    //rv_stores.setAdapter(arrayAdapterStoreUnit);
                 }
+                stickerTienda = new StickerTienda(listStores);
+                rv_stores.setAdapter(stickerTienda);
             }
 
             @Override
@@ -91,3 +82,15 @@ public class FragmentTiendas extends Fragment {
 
 
 }
+
+
+
+//        final View store1 = inputFragment.findViewById(R.id.store1);
+//        store1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(FragmentTiendas.this.getActivity(), StockDeTiendaActivity.class);
+//                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+//            }
+//        });

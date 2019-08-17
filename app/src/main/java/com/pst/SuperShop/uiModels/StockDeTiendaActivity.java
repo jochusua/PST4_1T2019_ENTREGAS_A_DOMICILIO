@@ -28,9 +28,10 @@ public class StockDeTiendaActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
     private List<DatosItem> getListData() {
+        // TODO: Listar items desde la base de datos
         mDatosItemList = new ArrayList<>();
         for (int i = 1; i <= 25; i++) {
-            mDatosItemList.add(new DatosItem("Precio $ " + i,"Nombre: "+i));
+            mDatosItemList.add(new DatosItem(i,"Nombre: "+i,"urlnothing"));
         }
         return mDatosItemList;
     }

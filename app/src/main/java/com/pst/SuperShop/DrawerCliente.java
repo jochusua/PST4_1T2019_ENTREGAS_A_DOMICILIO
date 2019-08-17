@@ -65,7 +65,7 @@ public class DrawerCliente extends AppCompatActivity
         // inicializar conexion firebase
         inicializarFirebase();
 
-        fragmentTiendas = new FragmentTiendas(database, reference.child("Tiendas"));
+        fragmentTiendas = new FragmentTiendas(reference.child("Tiendas"));
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     fragmentTiendas).commit();

@@ -1,13 +1,13 @@
 package com.pst.SuperShop.models;
 
 public class DatosTienda {
-    private String urlPhoto;
+    private String logourl;
     private String nombre;
     private float latitude;
     private float longitude;
 
-    public DatosTienda(String urlPhoto, String nombre, float latitude, float longitude) {
-        this.urlPhoto = urlPhoto;
+    public DatosTienda(String logourl, String nombre, float latitude, float longitude) {
+        this.logourl = logourl;
         this.nombre = nombre;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -37,11 +37,11 @@ public class DatosTienda {
         this.longitude = longitude;
     }
 
-    public String getUrlPhoto() {
-        return urlPhoto;
+    public String getLogourl() {
+        return logourl;
     }
 
-    public void setUrlPhoto(String urlPhoto) {
-        this.urlPhoto = urlPhoto;
+    public void setLogourl(String logourl) {
+        this.logourl = logourl;
     }
 }
