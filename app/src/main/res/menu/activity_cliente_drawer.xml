@@ -7,32 +7,19 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/menu_home" />
+            android:title="@string/menu_home_cliente" />
         <item
             android:id="@+id/nav_ubicacion"
             android:icon="@android:drawable/ic_menu_mylocation"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_gallery_cliente" />
         <item
             android:id="@+id/nav_perfil"
             android:icon="@drawable/perfil"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_slideshow_cliente" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/pedidos"
-            android:title="@string/menu_tools" />
+            android:title="@string/menu_tools_cliente" />
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
 
 </menu>

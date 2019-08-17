@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void loguearUsuario() {
+        //EditText correo = (EditText) findViewById(R.id.l_usuario);
+        //Intent i = new Intent(this, menu_cliente.class );
+        //i.putExtra("correo", correo.getText().toString());
+        //startActivity(i);
         //Obtenemos el email y la contraseña desde las cajas de texto
         final String email = tusuario.getText().toString().trim();
         String password = tcontraseña.getText().toString().trim();
@@ -76,9 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             //Intent intencion = new Intent(getApplication(), WellcomeActivity.class);
                             //intencion.putExtra(WellcomeActivity.user, user);
                             //startActivity(intencion);
-                            Intent i= new Intent(getApplication(), cliente.class );
+                            Intent i= new Intent(getApplication(), DrawerCliente.class );
                             startActivity(i);
-
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {//si se presenta una colisión
@@ -89,16 +92,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     }
                 });
-
-
     }
-
 
     @Override
     public void onClick(View view) {
         loguearUsuario();
     }
-
 
     public void FRegistro(View view) {
         Intent i = new Intent(this, Registro.class );

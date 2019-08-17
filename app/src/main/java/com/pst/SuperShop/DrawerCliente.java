@@ -17,6 +17,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -25,15 +28,23 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class cliente extends AppCompatActivity
+public class DrawerCliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LocationManager locationManager;
     AlertDialog alert = null;
+
+    //Firbase variables
+    FirebaseDatabase database;
+    DatabaseReference reference;
+    private FragmentTiendas fragmentTiendas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cliente);
+        setContentView(R.layout.activity_drawer_cliente);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        //Bundle bundle = getIntent().getExtras();
+        //bundle.getString("correo");
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -46,19 +57,30 @@ public class cliente extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open_cliente, R.string.navigation_drawer_close_cliente);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        // inicializar conexion firebase
+        inicializarFirebase();
+
+        fragmentTiendas = new FragmentTiendas(reference.child("Tiendas"));
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new home()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    fragmentTiendas).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if ( !locationManager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
             AlertNoGps();
         }
+    }
+
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
     }
 
     @Override
@@ -74,7 +96,7 @@ public class cliente extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.cliente, menu);
+        getMenuInflater().inflate(R.menu.menu_cliente, menu);
         return true;
     }
 
@@ -87,6 +109,7 @@ public class cliente extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            finish();
             return true;
         }
 
@@ -100,12 +123,12 @@ public class cliente extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new home()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentTiendas).commit();
         } else if (id == R.id.nav_ubicacion) {
             Intent intent=new Intent(getApplicationContext(),MapsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_perfil) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new perfil()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentPerfil()).commit();
         } else if (id == R.id.nav_tools) {
 
         } else if (id == R.id.nav_share) {
@@ -135,9 +158,7 @@ public class cliente extends AppCompatActivity
                 });
         alert = builder.create();
         alert.show();
+
     }
 
-    public void cerrarSesion(View view) {
-        finish();
-    }
 }
