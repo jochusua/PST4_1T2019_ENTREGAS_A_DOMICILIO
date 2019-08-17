@@ -13,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.pst.SuperShop.MapsActivity;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosTienda;
@@ -34,23 +36,32 @@ public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHold
         this.listTiendas = listTiendas;
     }
 
+    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.sticker_tienda, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         final DatosTienda datosTienda = listTiendas.get(position);
-
+        // cargar imagen desde la url, no cuelga la UI porque funciona como un threading
+        Glide.with(context)
+                .load(datosTienda.getLogourl())
+                .centerCrop()
+                .placeholder(R.drawable.image_placeholder)
+                .error(R.drawable.broken_image_blue)
+                .fallback(R.drawable.broken_image_blue)
+                .into(holder.storePhotoview)
+        ;
+        holder.nombre.setText(datosTienda.getNombre());
         // cuando realice click en el logo de tienda, se abrirá StockDeTienda
         holder.storePhotoview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                datosTienda.setSelected(!datosItem.isSelected());
-//                holder.view.setBackgroundColor(datosItem.isSelected() ? amber : Color.WHITE);
+                // TODO: abrir "stock personal" a traves de atributos en datosTienda
                 Intent intent=new Intent(context, StockDeTiendaActivity.class);
                 context.startActivity(intent);
             }
@@ -72,42 +83,10 @@ public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHold
         private MyViewHolder(View itemView) {
             super(itemView);
             view = itemView; // view o "layout" de stickerTienda
-            // descarga en un "threading" la imagen, permitiendo que la ui no se cuelgue
-            // TODO: Obtener fotourl de la base de datos e atar StockDeTiendaActivity a un click
-            new DownloadImageTask((ImageView) itemView.findViewById(R.id.store_photoview))
-                    .execute("http://java.sogeti.nl/JavaBlog/wp-content/uploads/2009/04/android_icon_256.png");
-            nombre = itemView.findViewById(R.id.nombreTV);
+            // cargar atributos a la clase
+            storePhotoview = (ImageView) itemView.findViewById(R.id.store_photoview);
+            nombre = (TextView) itemView.findViewById(R.id.nombreTV);
 
-        }
-    }
-
-
-    /**
-     *  Provee servicio para descargar imagen de url sin congelar la UI
-     */
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
-
-        // antes esto era public
-        DownloadImageTask(ImageView bmImage) {
-            this.bmImage = bmImage;
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap result = null;
-            try {
-                InputStream in = new java.net.URL(urldisplay).openStream();
-                result = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.toString());
-                e.printStackTrace();
-            }
-            return result;
-        }
-
-        protected void onPostExecute(Bitmap result) {
-            bmImage.setImageBitmap(result);
         }
     }
 }
