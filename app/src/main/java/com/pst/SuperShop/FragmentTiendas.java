@@ -1,6 +1,5 @@
 package com.pst.SuperShop;
 
-
 import android.content.Context;
 import android.os.Bundle;
 
@@ -69,7 +68,6 @@ public class FragmentTiendas extends Fragment {
 
         //context = getActivity().getApplicationContext();
         return inputFragment;
-
     }
 
     private void listarTiendas() {
@@ -79,12 +77,13 @@ public class FragmentTiendas extends Fragment {
                 listStores.clear(); // para persistencia ?
                 for (DataSnapshot objSnapshot: dataSnapshot.getChildren()){ // recorre nodo tiendas
                     DatosTienda su  = objSnapshot.getValue(DatosTienda.class);
+                    su.setUid(objSnapshot.getKey()); // identificador o uid
                     //Toast.makeText(context, "Tienda>"+su.getNombre(), Toast.LENGTH_LONG).show();
                     listStores.add(su);
                 }
                 stickerTienda = new StickerTienda(listStores);
                 rv_stores.setAdapter(stickerTienda);
-                Toast.makeText(context, "stickerTienda", Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, "stickerTienda", Toast.LENGTH_LONG).show();
 
             }
 

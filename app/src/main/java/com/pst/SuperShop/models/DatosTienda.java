@@ -5,6 +5,7 @@ public class DatosTienda {
     private String nombre;
     private double latitude;
     private double longitude;
+    private String uid;
 
     public DatosTienda() {
 
@@ -40,5 +41,13 @@ public class DatosTienda {
 
     public void setLogourl(String logourl) {
         this.logourl = logourl;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

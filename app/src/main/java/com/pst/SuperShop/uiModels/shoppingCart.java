@@ -32,9 +32,6 @@ public class shoppingCart extends AppCompatActivity {
     private List<DatosItem> getListData() {
         // TODO: Listar items desde la base de datos
         mDatosItemList = new ArrayList<>();
-        for (int i = 1; i <= 25; i++) {
-            mDatosItemList.add(new DatosItem(i,"Nombre: "+i,"urlnothing"));
-        }
         return mDatosItemList;
     }
 }

@@ -18,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".uiModels.shoppingCart"></activity>
-        <activity android:name=".LoginActivity" />
         <activity android:name=".uiModels.StockDeTiendaActivity" />
         <activity android:name=".geekStore" />
         <activity
