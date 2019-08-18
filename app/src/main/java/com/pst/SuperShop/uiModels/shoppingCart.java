@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -21,6 +22,7 @@ import com.pst.SuperShop.models.DatosItem;
 import com.pst.SuperShop.models.Pedido;
 import com.pst.SuperShop.models.Usuario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -61,15 +63,18 @@ public class shoppingCart extends AppCompatActivity{
     }
 
     public void comprar(View view) {
+        Intent i = new Intent(this, compraRealizada.class );
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         Pedido p= new Pedido();
-        p.setId_cliente("123");
+        p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());
         p.setLatitud(-2.15);
         p.setLongitud(-90.1);
         referencia.child("pedidos").child(UUID.randomUUID().toString()).setValue(p);
         Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
         finish();
+        i.putExtra("itemsSelecccionados", (Serializable) mDatosItemList);
+        startActivity(i);
     }
 
     public double totalPrecio(){
