@@ -19,7 +19,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".uiModels.shoppingCart"></activity>
         <activity android:name=".uiModels.StockDeTiendaActivity" />
-        <activity android:name=".geekStore" />
         <activity
             android:name=".DrawerCliente"
             android:label="@string/title_activity_cliente"
