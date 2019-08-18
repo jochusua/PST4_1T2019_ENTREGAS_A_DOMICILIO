@@ -51,7 +51,7 @@ public class DrawerCliente extends AppCompatActivity
         // inicializar conexion firebase
         inicializarFirebase();
 
-        fragmentTiendas = new FragmentTiendas();
+        fragmentTiendas = new FragmentTiendas(reference);
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     fragmentTiendas).commit();
@@ -67,7 +67,7 @@ public class DrawerCliente extends AppCompatActivity
         FirebaseApp.initializeApp(this);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
-        Toast.makeText(this, "Se inicializó firebase ", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Se inicializó firebase ", Toast.LENGTH_LONG).show();
     }
 
     @Override
