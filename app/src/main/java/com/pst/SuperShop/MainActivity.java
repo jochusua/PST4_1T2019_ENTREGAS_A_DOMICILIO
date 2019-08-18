@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             int pos = email.indexOf("@");
                             String user = email.substring(0, pos);
                             Intent i= new Intent(getApplication(), DrawerCliente.class );
+                            enviar_info();
                             startActivity(i);
 
                         } else {
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         loguearUsuario();
-        enviar_info();
+
     }
 
     public void FRegistro(View view) {

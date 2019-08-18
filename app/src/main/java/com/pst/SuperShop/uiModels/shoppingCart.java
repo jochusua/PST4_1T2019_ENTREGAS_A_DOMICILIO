@@ -34,6 +34,7 @@ public class shoppingCart extends AppCompatActivity{
     private LocationManager locationManager;
 
     String usuario;
+    String estado="pendiente";
 
 
     @Override
@@ -48,6 +49,7 @@ public class shoppingCart extends AppCompatActivity{
         mRecyclerView.setAdapter(mAdapter);
 
         usuario =getIntent().getStringExtra("dato2");
+        Toast.makeText(this,usuario+"holi",Toast.LENGTH_LONG).show();
 
     }
 
@@ -70,6 +72,7 @@ public class shoppingCart extends AppCompatActivity{
         p.setPrecio(totalPrecio());
         p.setLatitud(-2.15);
         p.setLongitud(-90.1);
+        p.setEstado(estado);
         referencia.child("pedidos").child(UUID.randomUUID().toString()).setValue(p);
         Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
         finish();
