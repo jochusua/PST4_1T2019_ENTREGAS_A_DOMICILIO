@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText tusuario, tcontraseña;
+    EditText tusuario, tcontrasenia;
     Button btnRegistrar, btnLogin;
 
     //Declaramos un objeto firebaseAuth
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         tusuario=(EditText)findViewById(R.id.l_usuario);
-        tcontraseña=(EditText)findViewById(R.id.l_contraseña);
+        tcontrasenia =(EditText)findViewById(R.id.l_contraseña);
 
         btnLogin = (Button) findViewById(R.id.blogin);
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //startActivity(i);
         //Obtenemos el email y la contraseña desde las cajas de texto
         final String email = tusuario.getText().toString().trim();
-        String password = tcontraseña.getText().toString().trim();
+        String password = tcontrasenia.getText().toString().trim();
 
         //Verificamos que las cajas de texto no esten vacías
         if (TextUtils.isEmpty(email)) {//(precio.equals(""))

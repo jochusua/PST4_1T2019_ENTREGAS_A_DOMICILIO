@@ -19,10 +19,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".uiModels.StockDeTiendaActivity" />
-        <activity
-            android:name=".repartidorMain"
-            android:label="@string/title_activity_repartidor_main"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".geekStore" />
         <activity
             android:name=".DrawerCliente"
@@ -44,9 +40,6 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".Principal_Cliente"
-            android:label="@string/title_activity_principal__cliente" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
