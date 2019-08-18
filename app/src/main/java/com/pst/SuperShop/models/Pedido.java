@@ -1,10 +1,14 @@
 package com.pst.SuperShop.models;
 
 public class Pedido {
+
     private String id_cliente;
     private double latitud;
     private double longitud;
     private double precio;
+    private String uid;
+
+
 
     public Pedido() {
     }
@@ -39,5 +43,13 @@ public class Pedido {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
