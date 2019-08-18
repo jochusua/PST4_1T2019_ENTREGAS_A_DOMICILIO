@@ -97,6 +97,7 @@ public class DrawerCliente extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             finish();
+            Toast.makeText( this, "Sesión cerrada exitosamente", Toast.LENGTH_SHORT ).show();
             return true;
         }
 
