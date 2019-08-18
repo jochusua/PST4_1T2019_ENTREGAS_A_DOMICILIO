@@ -7,8 +7,16 @@ public class Pedido {
     private double longitud;
     private double precio;
     private String uid;
+    private String estado;
 
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     public Pedido() {
     }

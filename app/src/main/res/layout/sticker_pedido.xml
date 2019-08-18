@@ -31,4 +31,10 @@
         android:layout_height="50dp"
         android:text="TextView" />
 
+    <TextView
+        android:id="@+id/textestado"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:text="TextView" />
+
 </LinearLayout>
