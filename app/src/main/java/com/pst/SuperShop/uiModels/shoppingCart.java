@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosItem;
@@ -32,11 +33,12 @@ public class shoppingCart extends AppCompatActivity {
 
     private List<DatosItem> getListData() {
         // TODO: Listar items desde la base de datos
-        mDatosItemList = new ArrayList<>();
+        mDatosItemList = (ArrayList<DatosItem>)getIntent().getSerializableExtra("itemsSelecccionados");
         return mDatosItemList;
     }
 
     public void noComprar(View view) {
+        Toast.makeText( this, "Compra no realizada", Toast.LENGTH_SHORT ).show();
         finish();
     }
 }

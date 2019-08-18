@@ -1,6 +1,8 @@
 package com.pst.SuperShop.models;
 
-public class DatosItem {
+import java.io.Serializable;
+
+public class DatosItem implements Serializable {
 
     private double precio;
     private String nombre;
