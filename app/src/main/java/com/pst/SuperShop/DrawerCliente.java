@@ -22,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.Toast;
 
 public class DrawerCliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +32,7 @@ public class DrawerCliente extends AppCompatActivity
     FirebaseDatabase database;
     DatabaseReference reference;
     private FragmentTiendas fragmentTiendas;
+    private pedidosCliente fragmentPedidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,9 @@ public class DrawerCliente extends AppCompatActivity
         inicializarFirebase();
 
         fragmentTiendas = new FragmentTiendas(reference);
+        fragmentPedidos = new pedidosCliente(reference);
+
+
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     fragmentTiendas).commit();
@@ -116,7 +119,8 @@ public class DrawerCliente extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.nav_perfil) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentPerfil()).commit();
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_pedidos) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentPedidos).commit();
 
         } else if (id == R.id.nav_share) {
 
