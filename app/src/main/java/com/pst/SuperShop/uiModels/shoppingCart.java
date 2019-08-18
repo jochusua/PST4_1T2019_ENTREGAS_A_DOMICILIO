@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosItem;
@@ -33,5 +34,9 @@ public class shoppingCart extends AppCompatActivity {
         // TODO: Listar items desde la base de datos
         mDatosItemList = new ArrayList<>();
         return mDatosItemList;
+    }
+
+    public void noComprar(View view) {
+        finish();
     }
 }
