@@ -124,10 +124,6 @@ public class DrawerCliente extends AppCompatActivity
         } else if (id == R.id.nav_pedidos) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentPedidos).commit();
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
