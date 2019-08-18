@@ -91,6 +91,11 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+
+    public void Escritura(){
+
+    }
+
     @Override
     public void onClick(View view) {
         //Invocamos al método:

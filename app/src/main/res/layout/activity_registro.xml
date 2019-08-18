@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="correo electronico"
         android:inputType="text"
         android:lineSpacingExtra="10sp"
 
