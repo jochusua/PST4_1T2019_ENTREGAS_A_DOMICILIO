@@ -107,7 +107,11 @@ public class StockDeTiendaActivity extends AppCompatActivity {
                 listItemsSelected.add(d);
             }
         }
-        i.putExtra("itemsSelecccionados", (Serializable) listItemsSelected);
-        startActivity(i);
+        if(listItemsSelected.isEmpty()){
+            Toast.makeText( this, "No posee productos seleccionados", Toast.LENGTH_SHORT ).show();
+        }else{
+            i.putExtra("itemsSelecccionados", (Serializable) listItemsSelected);
+            startActivity(i);
+        }
     }
 }
