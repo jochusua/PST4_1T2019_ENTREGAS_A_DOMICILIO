@@ -42,8 +42,9 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="207dp"
+                android:layout_width="203dp"
                 android:layout_height="wrap_content"
+                android:onClick="comprar"
                 android:text="SI" />
 
             <Button

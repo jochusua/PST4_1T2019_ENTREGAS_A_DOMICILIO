@@ -41,4 +41,9 @@ public class shoppingCart extends AppCompatActivity {
         Toast.makeText( this, "Compra no realizada", Toast.LENGTH_SHORT ).show();
         finish();
     }
+
+    public void comprar(View view) {
+        Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
+        finish();
+    }
 }
