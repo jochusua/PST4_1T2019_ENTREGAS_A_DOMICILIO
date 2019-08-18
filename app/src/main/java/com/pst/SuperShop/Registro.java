@@ -107,6 +107,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         usuario.setTelefono(celular);
         referencia.child("usuarios").child(UUID.randomUUID().toString()).setValue(usuario);
         Toast.makeText(this,"El registro fue exitoso",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

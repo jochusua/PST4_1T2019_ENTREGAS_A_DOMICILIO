@@ -1,42 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     android:layout_marginBottom="1dp"
-    android:background="#FFF"
+    android:background="@color/amber_400"
     android:clickable="true"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <ImageView
         android:id="@+id/item_photoview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        app:srcCompat="@color/light_blue_900" />
-
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/light_blue_700" />
 
-        <TextView
-            android:id="@+id/item_price"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            tools:precio="Price" />
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/item_textbackground"
+        android:text="Nombre item"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_photoview"
+        app:layout_constraintEnd_toEndOf="@+id/item_photoview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/item_photoview"
+        app:layout_constraintTop_toTopOf="@+id/item_photoview"
+        app:layout_constraintVertical_bias="0.98" />
 
-        <TextView
-            android:id="@+id/item_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="10dp"
-            tools:precio="Dscriptione" />
-
-    </LinearLayout>
-
-</LinearLayout>
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/item_textbackground"
+        android:text="Precio"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/item_name"
+        app:layout_constraintEnd_toEndOf="@+id/item_photoview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
