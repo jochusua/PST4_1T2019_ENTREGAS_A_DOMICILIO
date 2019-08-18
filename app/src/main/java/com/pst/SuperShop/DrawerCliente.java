@@ -5,11 +5,6 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 public class DrawerCliente extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,17 +39,7 @@ public class DrawerCliente extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer_cliente);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        //Bundle bundle = getIntent().getExtras();
-        //bundle.getString("correo");
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -65,7 +51,7 @@ public class DrawerCliente extends AppCompatActivity
         // inicializar conexion firebase
         inicializarFirebase();
 
-        fragmentTiendas = new FragmentTiendas(reference.child("Tiendas"));
+        fragmentTiendas = new FragmentTiendas();
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     fragmentTiendas).commit();
@@ -81,6 +67,7 @@ public class DrawerCliente extends AppCompatActivity
         FirebaseApp.initializeApp(this);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+        Toast.makeText(this, "Se inicializó firebase ", Toast.LENGTH_LONG).show();
     }
 
     @Override
