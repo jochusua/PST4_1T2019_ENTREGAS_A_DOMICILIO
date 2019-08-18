@@ -1,13 +1,18 @@
 package com.pst.SuperShop.uiModels;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -27,15 +32,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class shoppingCart extends AppCompatActivity{
+public class shoppingCart extends AppCompatActivity {
     private List<DatosItem> mDatosItemList;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
-    private LocationManager locationManager;
+    private LocationManager locManager;
+    private Location loc;
+    double lat;
+    double longitud;
 
     String usuario;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +56,22 @@ public class shoppingCart extends AppCompatActivity{
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
 
-        usuario =getIntent().getStringExtra("dato2");
+        usuario = getIntent().getStringExtra("dato2");
+        locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
+        loc = locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        lat=loc.getLatitude();
+        longitud=loc.getLongitude();
 
     }
 
@@ -68,8 +92,8 @@ public class shoppingCart extends AppCompatActivity{
         Pedido p= new Pedido();
         p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());
-        p.setLatitud(-2.15);
-        p.setLongitud(-90.1);
+        p.setLatitud(lat);
+        p.setLongitud(longitud);
         referencia.child("pedidos").child(UUID.randomUUID().toString()).setValue(p);
         Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
         finish();

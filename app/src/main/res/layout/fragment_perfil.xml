@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_xlarge"
-                android:text="Andrés López"
+                android:text="Andrea López"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                 android:textColor="@color/grey_90" />
 
@@ -53,15 +53,15 @@
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/profilepic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/photo_female_5"
                     app:civ_border="true"
                     app:civ_border_color="@color/red_800"
                     app:civ_border_width="2dp"
                     app:civ_shadow="false"
                     app:civ_shadow_radius="0"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:foreground="@drawable/andreslopez"
-                    android:src="@drawable/photo_female_5" />
+                    app:srcCompat="@drawable/photo_female_5" />
 
                 <ImageButton
                     app:srcCompat="@drawable/ic_chat"
