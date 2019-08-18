@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosItem;
 
@@ -23,6 +24,7 @@ public class StickerItem extends RecyclerView.Adapter<StickerItem.MyViewHolder> 
 
     private List<DatosItem> listDatosItem;
     private int amber;
+    private Context context;
 
     // here, this func was public
     StickerItem(List<DatosItem> datosItemList) {
@@ -31,7 +33,7 @@ public class StickerItem extends RecyclerView.Adapter<StickerItem.MyViewHolder> 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         amber = ResourcesCompat.getColor(context.getResources(),R.color.amber_300, null);
         View view = LayoutInflater.from(context).inflate(R.layout.sticker_item, parent, false);
         return new MyViewHolder(view);
@@ -46,10 +48,22 @@ public class StickerItem extends RecyclerView.Adapter<StickerItem.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final DatosItem datosItem = listDatosItem.get(position);
-        holder.itemPrice.setText(datosItem.getPrecio());
+        Glide.with(context)
+                .load(datosItem.getFotourl())
+                .fitCenter()
+                .placeholder(R.drawable.image_placeholder)
+                .error(R.drawable.broken_image_blue)
+                .fallback(R.drawable.broken_image_blue)
+                .into(holder.itemPhoto)
+        ;
+
+        holder.itemName.setText(datosItem.getNombre());
+        holder.itemPrice.setText(String.valueOf(datosItem.getPrecio()));
+
+        // configurar fondo cuando aparece en pantalla
         holder.view.setBackgroundColor(datosItem.isSelected() ? amber : Color.WHITE);
 
-        // cuando realiza click en itemPrice, se ejecutará lo siguiente
+        // configurar cuando realiza click en itemPrice, se ejecutará lo siguiente
         holder.itemPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -2,19 +2,18 @@ package com.pst.SuperShop.models;
 
 public class DatosItem {
 
-    private int precio;
+    private double precio;
     private String nombre;
     private String fotourl;
     private boolean isSelected = false;
 
-    public DatosItem(int precio, String nombre, String fotourl) {
-        this.precio = precio;
-        this.nombre = nombre;
-        this.fotourl = fotourl;
+    public DatosItem() {
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public void setFotourl(String fotourl) {
         this.fotourl = fotourl;
     }
@@ -23,11 +22,11 @@ public class DatosItem {
         isSelected = selected;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

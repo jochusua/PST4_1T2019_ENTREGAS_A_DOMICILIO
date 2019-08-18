@@ -50,12 +50,13 @@ public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHold
         // cargar imagen desde la url, no cuelga la UI porque funciona como un threading
         Glide.with(context)
                 .load(datosTienda.getLogourl())
-                .centerCrop()
+                .fitCenter()
                 .placeholder(R.drawable.image_placeholder)
                 .error(R.drawable.broken_image_blue)
                 .fallback(R.drawable.broken_image_blue)
                 .into(holder.storePhotoview)
         ;
+
         holder.nombre.setText(datosTienda.getNombre());
         // cuando realice click en el logo de tienda, se abrirá StockDeTienda
         holder.storePhotoview.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +64,9 @@ public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHold
             public void onClick(View view) {
                 // TODO: abrir "stock personal" a traves de atributos en datosTienda
                 Intent intent=new Intent(context, StockDeTiendaActivity.class);
+                intent.putExtra("URL_LOGO",datosTienda.getLogourl());
+                intent.putExtra("UID_TIENDA",datosTienda.getUid());
+                intent.putExtra("NOMBRE_TIENDA",datosTienda.getNombre());
                 context.startActivity(intent);
             }
         });

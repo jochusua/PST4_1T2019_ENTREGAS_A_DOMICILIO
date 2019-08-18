@@ -4,31 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#03A9F4"
-    >
+    android:background="@color/light_blue_700"
+    tools:context=".MainActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_margin="12dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp">
 
         <TextView
-            android:id="@+id/emailTextview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SUPER SHOP"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:lineSpacingExtra="10sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
             android:text="Deja que tus super héroes lo hagan por ti"
             android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textColorHighlight="@color/amber_400"
             android:textSize="18sp" />
 
         <ImageView
@@ -44,7 +40,8 @@
             android:ems="10"
             android:hint="Usuario"
             android:inputType="textPersonName"
-            android:text="test1@espol.edu.ec" />
+            android:text="test1@espol.edu.ec"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/l_contraseña"
@@ -53,12 +50,14 @@
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword"
-            android:text="mini123" />
+            android:text="mini123"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/blogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_rounded_amber_300"
             android:onClick="onClick"
             android:text="Ingresar" />
 
@@ -66,6 +65,7 @@
             android:id="@+id/bregistrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_rounded_green_300"
             android:onClick="FRegistro"
             android:text="Registrarse" />
 
