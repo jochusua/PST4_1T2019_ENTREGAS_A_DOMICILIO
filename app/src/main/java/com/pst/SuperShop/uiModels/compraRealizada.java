@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pst.SuperShop.R;
@@ -18,6 +19,8 @@ public class compraRealizada extends AppCompatActivity {
     private List<DatosItem> mDatosItemList;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
+    TextView totalfinal;
+    String total;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,10 @@ public class compraRealizada extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
+        total =getIntent().getStringExtra("total");
+        totalfinal=(TextView) findViewById(R.id.total);
+
+        totalfinal.setText(total);
     }
 
     private List<DatosItem> getListData() {

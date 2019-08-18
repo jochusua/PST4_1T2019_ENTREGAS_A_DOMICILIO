@@ -74,6 +74,7 @@ public class shoppingCart extends AppCompatActivity{
         Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
         finish();
         i.putExtra("itemsSelecccionados", (Serializable) mDatosItemList);
+        i.putExtra("total", String.valueOf(totalPrecio()));
         startActivity(i);
     }
 
