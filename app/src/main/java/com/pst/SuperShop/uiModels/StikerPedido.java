@@ -2,17 +2,20 @@ package com.pst.SuperShop.uiModels;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.pst.SuperShop.R;
+import com.pst.SuperShop.Registro;
 import com.pst.SuperShop.models.DatosTienda;
 import com.pst.SuperShop.models.Pedido;
 
@@ -39,23 +42,29 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
     public void onBindViewHolder(@NonNull StikerPedido.MyViewHolder holder, int position) {
         final Pedido pedidos = listPedidos.get(position);
 
-        /*
-        Glide.with(context)
-                .load(pedidos.getLogourl())
-                .fitCenter()
-                .placeholder(R.drawable.image_placeholder)
-                .error(R.drawable.broken_image_blue)
-                .fallback(R.drawable.broken_image_blue)
-                .into(holder.storePhotoview)
-        ;
-        */
 
         String pre= Double.toString(pedidos.getPrecio());
         holder.identificacion.setText("Cliente: "+pedidos.getId_cliente());
         holder.precio.setText("Precio: "+pre);
+        holder.estado.setText(pedidos.getEstado());
+
+        if (pedidos.getEstado().equalsIgnoreCase("pendiente")){
+            holder.storePhotoview.setImageResource(R.drawable.pendiente);
+        }
 
 
         // cuando realice click en el logo de tienda, se abrirá StockDeTienda
+        holder.storePhotoview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pedidos.getEstado().equalsIgnoreCase("finalizado")){
+                    Toast.makeText(context,"Ya se realizo este encargo",Toast.LENGTH_SHORT).show();
+                }else if (pedidos.getEstado().equalsIgnoreCase("pendiente")){
+                    Toast.makeText(context,"El encargo es aprobado",Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
 
     }
 
@@ -67,19 +76,20 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         private View view;
-        //private ImageView storePhotoview;
+        private ImageView storePhotoview;
         private TextView identificacion;
         private TextView precio;
+        private TextView estado;
 
 
         private MyViewHolder(View itemView) {
             super(itemView);
             view = itemView; // view o "layout" de stickerTienda
             // cargar atributos a la clase
-            //storePhotoview = (ImageView) itemView.findViewById(R.id.store_photoview);
+            storePhotoview = (ImageView) itemView.findViewById(R.id.store_photoview);
             identificacion = (TextView) itemView.findViewById(R.id.id_pedido);
             precio = (TextView) itemView.findViewById(R.id.text_precio);
-
+            estado = (TextView) itemView.findViewById(R.id.textestado);
         }
     }
 }
