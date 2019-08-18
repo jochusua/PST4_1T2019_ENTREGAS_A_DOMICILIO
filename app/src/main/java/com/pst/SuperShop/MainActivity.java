@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.pst.SuperShop.uiModels.shoppingCart;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -84,9 +85,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
+    public void enviar_info(){
+        Intent i= new Intent(this, shoppingCart.class);
+        i.putExtra("dato2",tusuario.getText().toString());
+    }
+
+
     @Override
     public void onClick(View view) {
         loguearUsuario();
+        enviar_info();
     }
 
     public void FRegistro(View view) {
