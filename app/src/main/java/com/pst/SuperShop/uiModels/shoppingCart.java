@@ -24,6 +24,8 @@ public class shoppingCart extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
+    String usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class shoppingCart extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
+
+        usuario =getIntent().getStringExtra("dato2");
+
     }
 
     private List<DatosItem> getListData() {
