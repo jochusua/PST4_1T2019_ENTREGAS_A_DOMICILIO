@@ -8,8 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.pst.SuperShop.MainActivity;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosItem;
+import com.pst.SuperShop.models.Pedido;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +23,7 @@ public class shoppingCart extends AppCompatActivity {
     private List<DatosItem> mDatosItemList;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,11 @@ public class shoppingCart extends AppCompatActivity {
     }
 
     public void comprar(View view) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Pedido p= new Pedido();
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello, World!");
+
         Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
         finish();
     }
