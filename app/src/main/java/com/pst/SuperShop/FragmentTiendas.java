@@ -39,8 +39,11 @@ public class FragmentTiendas extends Fragment {
     private RecyclerView rv_stores;
     private StickerTienda stickerTienda;
 
+    public FragmentTiendas() {
+        // Required empty public constructor
+    }
 
-    FragmentTiendas( DatabaseReference refTiendas) {
+    public FragmentTiendas( DatabaseReference refTiendas) {
         //this.database = database;
         this.refTiendas = refTiendas;
     }
@@ -51,11 +54,11 @@ public class FragmentTiendas extends Fragment {
         // Inflate the layout for this fragment
         final View inputFragment = inflater.inflate(R.layout.fragment_home, container, false);
         // populate tiendas frome refTiendas
-        listarTiendas();
+        //listarTiendas();
 
         // make each tienda open stockdetiendaactivity
 
-        context = getActivity().getApplicationContext();
+        //context = getActivity().getApplicationContext();
         return inputFragment;
 
     }
