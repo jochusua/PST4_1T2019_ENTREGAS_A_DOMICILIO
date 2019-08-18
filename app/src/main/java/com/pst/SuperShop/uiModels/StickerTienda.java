@@ -56,6 +56,7 @@ public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHold
                 .fallback(R.drawable.broken_image_blue)
                 .into(holder.storePhotoview)
         ;
+        Log.d("myId?", "Current data: null");
         holder.nombre.setText(datosTienda.getNombre());
         // cuando realice click en el logo de tienda, se abrirá StockDeTienda
         holder.storePhotoview.setOnClickListener(new View.OnClickListener() {
