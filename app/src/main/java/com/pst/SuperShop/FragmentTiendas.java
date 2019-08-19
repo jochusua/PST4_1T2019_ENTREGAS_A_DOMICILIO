@@ -60,13 +60,7 @@ public class FragmentTiendas extends Fragment {
         rv_stores.setAdapter(null);
 
         // populate tiendas frome refTiendas
-
-        //Toast.makeText(getContext(), "Antes de listarTiendas", Toast.LENGTH_LONG).show();
         listarTiendas();
-        //Toast.makeText(getContext(), refTiendas.child("tiendas").toString(), Toast.LENGTH_LONG).show();
-        // make each tienda open stockdetiendaactivity
-
-        //context = getActivity().getApplicationContext();
         return inputFragment;
     }
 
@@ -96,15 +90,3 @@ public class FragmentTiendas extends Fragment {
 
 
 }
-
-
-
-//        final View store1 = inputFragment.findViewById(R.id.store1);
-//        store1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(FragmentTiendas.this.getActivity(), StockDeTiendaActivity.class);
-//                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//            }
-//        });

@@ -23,12 +23,14 @@ import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosItem;
 import com.pst.SuperShop.models.DatosTienda;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StockDeTiendaActivity extends AppCompatActivity {
 
     private List<DatosItem> listItems = new ArrayList<DatosItem>();
+    private List<DatosItem> listItemsSelected = new ArrayList<DatosItem>();
     private RecyclerView mRecyclerView;
     private DatabaseReference reference;
 
@@ -99,6 +101,17 @@ public class StockDeTiendaActivity extends AppCompatActivity {
 
     public void ingresarShoppingCart(View view) {
         Intent i = new Intent(this, shoppingCart.class );
-        startActivity(i);
+        listItemsSelected.clear();
+        for(DatosItem d:listItems){
+            if(d.isSelected()){
+                listItemsSelected.add(d);
+            }
+        }
+        if(listItemsSelected.isEmpty()){
+            Toast.makeText( this, "No posee productos seleccionados", Toast.LENGTH_SHORT ).show();
+        }else{
+            i.putExtra("itemsSelecccionados", (Serializable) listItemsSelected);
+            startActivity(i);
+        }
     }
 }

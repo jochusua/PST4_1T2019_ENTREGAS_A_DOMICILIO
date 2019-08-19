@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".uiModels.shoppingCart">
+    tools:context=".uiModels.compraRealizada">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,23 +13,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/logoView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:srcCompat="@android:color/holo_blue_dark" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Desea comprar estos productos?"
+            android:text="Su compra se ha realizado exitosamente"
             android:textSize="24sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="411dp"
-            android:layout_height="312dp"
+            android:layout_height="341dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp">
 
@@ -37,24 +31,33 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="203dp"
-                android:layout_height="wrap_content"
-                android:onClick="comprar"
-                android:text="SI" />
-
-            <Button
-                android:id="@+id/button2"
+            <TextView
+                android:id="@+id/item_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="noComprar"
-                android:text="NO" />
-        </LinearLayout>
-    </LinearLayout>
+                android:text="Total Compra:"
+                android:textSize="24sp"
+                tools:text="Total Compra:" />
 
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="volver"
+            android:text="Volver" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

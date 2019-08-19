@@ -15,6 +15,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.pst.SuperShop.models.Usuario;
+
+import java.util.UUID;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
 
@@ -75,7 +80,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if(task.isSuccessful()){
-
+                            Escritura();
                             Toast.makeText(Registro.this,"Se ha registrado el usuario con el email: "+ etusuario.getText(),Toast.LENGTH_LONG).show();
                         }else{
 
@@ -91,10 +96,25 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+
+    public void Escritura(){
+        DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+        Usuario usuario = new Usuario();
+        usuario.setIdentificacion(etusuario.getText().toString());
+        usuario.setNombre(etnombre.getText().toString());
+        usuario.setApellido(etapellido.getText().toString());
+        double celular = Integer.valueOf(ettelefono.getText().toString());
+        usuario.setTelefono(celular);
+        referencia.child("usuarios").child(UUID.randomUUID().toString()).setValue(usuario);
+        Toast.makeText(this,"El registro fue exitoso",Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
     @Override
     public void onClick(View view) {
         //Invocamos al método:
         Registrar();
+
     }
 
 
