@@ -79,11 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 startActivity(i);
                             }else {
                                 Intent i = new Intent(getApplication(), DrawerCliente.class);
+                                enviar_info();
                                 startActivity(i);
                             }
-                            Intent i= new Intent(getApplication(), DrawerCliente.class );
-                            enviar_info();
-                            startActivity(i);
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {//si se presenta una colisión

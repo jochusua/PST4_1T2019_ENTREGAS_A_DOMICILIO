@@ -50,7 +50,7 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
         holder.estado.setText(pedidos.getEstado());
 
         if (pedidos.getEstado().equalsIgnoreCase("pendiente")){
-            holder.storePhotoview.setImageResource(R.drawable.pendiente);
+            holder.storePhotoview.setImageResource(R.drawable.pendiente2);
         }
 
 

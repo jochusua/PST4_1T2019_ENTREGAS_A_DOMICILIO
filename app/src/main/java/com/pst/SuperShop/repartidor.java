@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class repartidor extends AppCompatActivity {
@@ -88,5 +89,8 @@ public class repartidor extends AppCompatActivity {
         alert = builder.create();
         alert.show();
 
+    }
+    public void cerrarSesion(View view) {
+        finish();
     }
 }
