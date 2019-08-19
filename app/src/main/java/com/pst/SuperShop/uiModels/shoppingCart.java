@@ -40,6 +40,7 @@ public class shoppingCart extends AppCompatActivity {
     private Location loc;
     double lat;
     double longitud;
+    String estado="pendiente";
 
     String usuario;
 
@@ -90,7 +91,9 @@ public class shoppingCart extends AppCompatActivity {
         Intent i = new Intent(this, compraRealizada.class );
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         Pedido p= new Pedido();
-        p.setId_cliente(usuario);
+        p.setEstado(estado);
+        p.setId_cliente("jlchuchu@espol.edu.ec");
+        //p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());
         p.setLatitud(lat);
         p.setLongitud(longitud);

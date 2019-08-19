@@ -60,14 +60,14 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
             public void onClick(View view) {
                 if (pedidos.getEstado().equalsIgnoreCase("finalizado")){
                     Toast.makeText(context,"Ya se realizo este encargo",Toast.LENGTH_SHORT).show();
+
+                }else if (pedidos.getEstado().equalsIgnoreCase("pendiente")){
+                    Toast.makeText(context,"El encargo es aprobado",Toast.LENGTH_SHORT).show();
                     // todo: iniciar mapsactivity
                     Intent i = new Intent(context, MapsActivity.class);
                     i.putExtra("latitude",pedidos.getLatitud());
                     i.putExtra("longitude",pedidos.getLongitud());
                     context.startActivity(i);
-                }else if (pedidos.getEstado().equalsIgnoreCase("pendiente")){
-                    Toast.makeText(context,"El encargo es aprobado",Toast.LENGTH_SHORT).show();
-
                 }
             }
         });

@@ -60,6 +60,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
             mMap.addMarker( new MarkerOptions().position( cliente ).title( "Cliente" ).icon( BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_GREEN ) ) );
         }
+
+        //HobbieCars
+        LatLng hobbiecars = new LatLng(-2.154778, -79.892423);
+        mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
+        mMap.addMarker(new MarkerOptions().position(hobbiecars).title("Hobbiecars Mall del Sol"));
+
         //GeekStore
         LatLng geekstore = new LatLng(-2.154969, -79.891575);
         mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
