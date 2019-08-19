@@ -47,6 +47,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+
+        double latitude = getIntent().getDoubleExtra("latitude",0);
+        double longitude = getIntent().getDoubleExtra("longitude",0);
+
+        if (latitude == 0 || longitude == 0){
+            // no es pedido
+        }
+        else{
+            // si es pedido
+            LatLng cliente = new LatLng(latitude, longitude);
+            mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
+            mMap.addMarker( new MarkerOptions().position( cliente ).title( "Cliente" ).icon( BitmapDescriptorFactory.defaultMarker( BitmapDescriptorFactory.HUE_GREEN ) ) );
+        }
         //GeekStore
         LatLng geekstore = new LatLng(-2.154969, -79.891575);
         mMap.setMapType( GoogleMap.MAP_TYPE_NORMAL );
