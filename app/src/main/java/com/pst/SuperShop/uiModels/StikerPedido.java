@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.pst.SuperShop.MapsActivity;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.Registro;
@@ -21,6 +23,7 @@ import com.pst.SuperShop.models.DatosTienda;
 import com.pst.SuperShop.models.Pedido;
 
 import java.util.List;
+import java.util.UUID;
 
 public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder>{
 
@@ -58,11 +61,15 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
         holder.storePhotoview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (pedidos.getEstado().equalsIgnoreCase("finalizado")){
-                    Toast.makeText(context,"Ya se realizo este encargo",Toast.LENGTH_SHORT).show();
+                if (pedidos.getEstado().equalsIgnoreCase("Entregado")){
+                    Toast.makeText(context,"Ya se realizó este encargo",Toast.LENGTH_SHORT).show();
 
-                }else if (pedidos.getEstado().equalsIgnoreCase("pendiente")){
-                    Toast.makeText(context,"El encargo es aprobado",Toast.LENGTH_SHORT).show();
+                }else if (pedidos.getEstado().equalsIgnoreCase("Pendiente")){
+                    DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+                    Toast.makeText(context,"El encargo es aprobado",Toast.LENGTH_LONG).show();
+                    //pedidos.setEstado("Entregado");
+                    //referencia.child("pedidos").child(pedidos.getUid()).setValue(pedidos);
+
                     // todo: iniciar mapsactivity
                     Intent i = new Intent(context, MapsActivity.class);
                     i.putExtra("latitude",pedidos.getLatitud());

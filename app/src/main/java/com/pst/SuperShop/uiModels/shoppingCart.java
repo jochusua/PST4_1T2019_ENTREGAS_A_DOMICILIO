@@ -40,7 +40,7 @@ public class shoppingCart extends AppCompatActivity {
     private Location loc;
     double lat;
     double longitud;
-    String estado="pendiente";
+    String estado="Pendiente";
 
     String usuario;
 
