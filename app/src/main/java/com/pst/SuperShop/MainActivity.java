@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             int pos = email.indexOf("@");
                             String user = email.substring(0, pos);
+<<<<<<< HEAD
                             if(checkBox.isChecked()){
                                 Intent i = new Intent(getApplication(), repartidor.class);
                                 startActivity(i);
@@ -81,6 +82,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 Intent i = new Intent(getApplication(), DrawerCliente.class);
                                 startActivity(i);
                             }
+=======
+                            Intent i= new Intent(getApplication(), DrawerCliente.class );
+                            enviar_info();
+                            startActivity(i);
+>>>>>>> master
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {//si se presenta una colisión
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         loguearUsuario();
-        enviar_info();
+
     }
 
     public void FRegistro(View view) {
