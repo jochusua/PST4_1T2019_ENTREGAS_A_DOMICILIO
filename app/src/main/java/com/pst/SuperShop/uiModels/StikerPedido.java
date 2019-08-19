@@ -67,8 +67,8 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
                 }else if (pedidos.getEstado().equalsIgnoreCase("Pendiente")){
                     DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
                     Toast.makeText(context,"El encargo es aprobado",Toast.LENGTH_LONG).show();
-                    //pedidos.setEstado("Entregado");
-                    //referencia.child("pedidos").child(pedidos.getUid()).setValue(pedidos);
+                    pedidos.setEstado("Entregado");
+                    referencia.child("pedidos").child(pedidos.getUid()).setValue(pedidos);
 
                     // todo: iniciar mapsactivity
                     Intent i = new Intent(context, MapsActivity.class);

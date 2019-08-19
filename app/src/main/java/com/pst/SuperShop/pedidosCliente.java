@@ -77,7 +77,7 @@ public class pedidosCliente extends Fragment {
                 listPedidos.clear(); // para persistencia ?
                 for (DataSnapshot objSnapshot: dataSnapshot.getChildren()){ // recorre nodo pedidos
                     Pedido pedido  = objSnapshot.getValue(Pedido.class);
-                    //pedido.setUid(objSnapshot.getKey()); // identificador o uid
+                    pedido.setUid(objSnapshot.getKey()); // identificador o uid
                     //Toast.makeText(context, "pedido>"+su.getNombre(), Toast.LENGTH_LONG).show();
                     listPedidos.add(pedido);
                 }

@@ -15,8 +15,11 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,6 +41,7 @@ public class shoppingCart extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private LocationManager locManager;
     private Location loc;
+    private DatabaseReference reference;
     double lat;
     double longitud;
     String estado="Pendiente";
@@ -50,12 +54,25 @@ public class shoppingCart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
+        ImageView logoView = (ImageView) findViewById(R.id.logoView);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mAdapter = new StickerItem(getListData());
         LinearLayoutManager manager = new LinearLayoutManager(shoppingCart.this);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
+
+        final String logoUrl = getIntent().getStringExtra("URL_LOGO1");
+
+        Glide.with(this)
+                .load(logoUrl)
+                .fitCenter()
+                .placeholder(R.drawable.image_placeholder)
+                .error(R.drawable.broken_image_blue)
+                .fallback(R.drawable.broken_image_blue)
+                .into(logoView)
+        ;
+        inicializarFirebase();
 
         usuario = getIntent().getStringExtra("dato2");
         locManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -113,5 +130,11 @@ public class shoppingCart extends AppCompatActivity {
         return total;
     }
 
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
+        //Toast.makeText(this, "Se inicializó firebase ", Toast.LENGTH_LONG).show();
+    }
 
 }
