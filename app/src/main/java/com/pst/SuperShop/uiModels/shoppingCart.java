@@ -77,7 +77,7 @@ public class shoppingCart extends AppCompatActivity{
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         Pedido p= new Pedido();
         p.setEstado(estado);
-        p.setId_cliente("jlchuchu@espol.edu.ec");
+        p.setId_cliente("dlara@espol.edu.ec");
         //p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());
         p.setLatitud(-2.15);
