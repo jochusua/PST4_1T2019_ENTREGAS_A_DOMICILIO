@@ -39,13 +39,15 @@ public class FragmentTiendas extends Fragment {
     private Context context;
     private RecyclerView rv_stores;
     private StickerTienda stickerTienda;
+    private String email_cliente;
 
     public FragmentTiendas() {
         // Required empty public constructor
     }
 
-    public FragmentTiendas( DatabaseReference refTiendas) {
+    public FragmentTiendas( DatabaseReference refTiendas, String email) {
         //this.database = database;
+        this.email_cliente = email;
         this.refTiendas = refTiendas;
     }
 
@@ -75,7 +77,7 @@ public class FragmentTiendas extends Fragment {
                     //Toast.makeText(context, "Tienda>"+su.getNombre(), Toast.LENGTH_LONG).show();
                     listStores.add(su);
                 }
-                stickerTienda = new StickerTienda(listStores);
+                stickerTienda = new StickerTienda(listStores, email_cliente);
                 rv_stores.setAdapter(stickerTienda);
                 //Toast.makeText(context, "stickerTienda", Toast.LENGTH_LONG).show();
 

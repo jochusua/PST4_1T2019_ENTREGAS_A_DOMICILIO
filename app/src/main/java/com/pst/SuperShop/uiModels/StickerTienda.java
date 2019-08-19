@@ -21,6 +21,7 @@ import com.pst.SuperShop.MapsActivity;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosTienda;
 
+import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -29,11 +30,13 @@ import java.util.List;
  */
 public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHolder> {
 
+    private final String email_cliente;
     private List<DatosTienda> listTiendas;
     private Context context;
 
-    public StickerTienda(List<DatosTienda> listTiendas) {
+    public StickerTienda(List<DatosTienda> listTiendas, String email_cliente) {
         this.listTiendas = listTiendas;
+        this.email_cliente = email_cliente;
     }
 
     @NonNull
@@ -64,9 +67,10 @@ public class StickerTienda extends RecyclerView.Adapter<StickerTienda.MyViewHold
             public void onClick(View view) {
                 // TODO: abrir "stock personal" a traves de atributos en datosTienda
                 Intent intent=new Intent(context, StockDeTiendaActivity.class);
-                intent.putExtra("URL_LOGO",datosTienda.getLogourl());
-                intent.putExtra("UID_TIENDA",datosTienda.getUid());
                 intent.putExtra("NOMBRE_TIENDA",datosTienda.getNombre());
+                intent.putExtra("URL_LOGO", datosTienda.getLogourl());
+                intent.putExtra("UID_TIENDA", datosTienda.getUid());
+                intent.putExtra("email_cliente", email_cliente);
                 context.startActivity(intent);
             }
         });
