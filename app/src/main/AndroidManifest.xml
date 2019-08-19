@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".uiModels.compraRealizada"></activity>
+        <activity
+            android:name=".repartidor"
+            android:label="@string/title_activity_repartidor"></activity>
+        <activity android:name=".uiModels.compraRealizada" />
         <activity android:name=".uiModels.shoppingCart" />
         <activity android:name=".uiModels.StockDeTiendaActivity" />
         <activity

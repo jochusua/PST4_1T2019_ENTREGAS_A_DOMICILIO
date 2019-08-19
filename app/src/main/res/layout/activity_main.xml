@@ -53,6 +53,12 @@
             android:text="mini123"
             android:textColor="@android:color/white" />
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Conductor" />
+
         <Button
             android:id="@+id/blogin"
             android:layout_width="match_parent"

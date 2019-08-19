@@ -42,4 +42,7 @@
     <string name="not_log_in">No se pudo iniciar sesión</string>
     <string name="log_out">Log Out</string>
     <string name="not_firebase_auth">No se pudo autenticar con Firebase</string>
+    <string name="title_activity_repartidor">repartidor</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     EditText tusuario, tcontrasenia;
     Button btnRegistrar, btnLogin;
+    CheckBox checkBox;
 
     //Declaramos un objeto firebaseAuth
     private FirebaseAuth firebaseAuth;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tusuario=(EditText)findViewById(R.id.l_usuario);
         tcontrasenia =(EditText)findViewById(R.id.l_contraseña);
+        checkBox=(CheckBox)findViewById(R.id.checkBox);
 
         btnLogin = (Button) findViewById(R.id.blogin);
 
@@ -71,8 +74,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             int pos = email.indexOf("@");
                             String user = email.substring(0, pos);
-                            Intent i= new Intent(getApplication(), DrawerCliente.class );
-                            startActivity(i);
+                            if(checkBox.isChecked()){
+                                Intent i = new Intent(getApplication(), repartidor.class);
+                                startActivity(i);
+                            }else {
+                                Intent i = new Intent(getApplication(), DrawerCliente.class);
+                                startActivity(i);
+                            }
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {//si se presenta una colisión
