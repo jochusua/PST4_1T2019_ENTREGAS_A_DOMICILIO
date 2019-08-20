@@ -30,7 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.pst.SuperShop.uiModels.shoppingCart;
 
-public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     EditText email, pwd;
     Button btnRegistrar, btnLogin;
@@ -125,18 +125,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                                 startActivity(i);
                             }else {
                                 Intent i = new Intent(getApplication(), DrawerCliente.class);
+                                enviar_info();
                                 startActivity(i);
                             }
 
                         } else {
                             if (task.getException() instanceof FirebaseAuthUserCollisionException) {//si se presenta una colisión
-                                Toast.makeText(LoginActivity.this, "Ese usuario ya existe ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Ese usuario ya existe ", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(LoginActivity.this, "No se pudo ingresar con ese usuario ", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, "No se pudo ingresar con ese usuario ", Toast.LENGTH_LONG).show();
                             }
                         }
                     }
                 });
+    }
+
+    public void enviar_info(){
+        Intent i= new Intent(this, shoppingCart.class);
+        i.putExtra("dato2", email.getText().toString());
     }
 
     public void FRegistro(View view) {

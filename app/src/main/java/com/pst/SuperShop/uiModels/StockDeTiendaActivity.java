@@ -36,8 +36,6 @@ public class StockDeTiendaActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private String logoUrl;
     private Context context;
-    private String nombretienda;
-    private String email_cliente;
 
 
     @Override
@@ -48,19 +46,19 @@ public class StockDeTiendaActivity extends AppCompatActivity {
         ImageView logoView = (ImageView) findViewById(R.id.logoView);
         TextView nombretiendaTV = (TextView) findViewById(R.id.nombretiendatv);
 
+
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         LinearLayoutManager manager = new LinearLayoutManager(StockDeTiendaActivity.this);
         //mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(null);
 
-        final String logoUrl = getIntent().getStringExtra("URL_LOGO");
-        nombretienda = getIntent().getStringExtra("NOMBRE_TIENDA");
+        String logoUrl = getIntent().getStringExtra("URL_LOGO");
+        final String nombreTienda = getIntent().getStringExtra("NOMBRE_TIENDA");
         final String uidTienda = getIntent().getStringExtra("UID_TIENDA");
-        email_cliente = getIntent().getStringExtra("email_cliente");
 
 
-        nombretiendaTV.setText(nombretienda);
+        nombretiendaTV.setText(nombreTienda);
 
         Glide.with(this)
                 .load(logoUrl)
@@ -107,8 +105,6 @@ public class StockDeTiendaActivity extends AppCompatActivity {
     public void ingresarShoppingCart(View view) {
         Intent i = new Intent(this, shoppingCart.class );
         listItemsSelected.clear();
-        i.putExtra("tienda", nombretienda);
-        i.putExtra("id_cliente", email_cliente);
         for(DatosItem d:listItems){
             if(d.isSelected()){
                 listItemsSelected.add(d);

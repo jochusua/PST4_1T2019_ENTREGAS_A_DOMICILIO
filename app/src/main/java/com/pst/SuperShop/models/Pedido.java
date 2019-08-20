@@ -8,19 +8,10 @@ public class Pedido {
     private double precio;
     private String uid;
     private String estado;
-    private String nombreTienda;
 
 
     public String getEstado() {
         return estado;
-    }
-
-    public String getNombreTienda() {
-        return nombreTienda;
-    }
-
-    public void setNombreTienda(String nombreTienda) {
-        this.nombreTienda = nombreTienda;
     }
 
     public void setEstado(String estado) {
