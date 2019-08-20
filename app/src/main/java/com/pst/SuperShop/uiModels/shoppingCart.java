@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,11 +20,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.pst.SuperShop.MainActivity;
+import com.pst.SuperShop.MapsActivity;
 import com.pst.SuperShop.R;
 import com.pst.SuperShop.models.DatosItem;
 import com.pst.SuperShop.models.Pedido;
+import com.pst.SuperShop.models.Usuario;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,8 +47,6 @@ public class shoppingCart extends AppCompatActivity {
     String estado="Pendiente";
 
     String usuario;
-    private String nombreTienda;
-    private String id_cliente;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -58,8 +61,6 @@ public class shoppingCart extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
-        nombreTienda = getIntent().getStringExtra("tienda");
-        id_cliente = getIntent().getStringExtra("id_cliente");
 
         final String logoUrl = getIntent().getStringExtra("URL_LOGO1");
 
@@ -107,13 +108,12 @@ public class shoppingCart extends AppCompatActivity {
         Intent i = new Intent(this, compraRealizada.class );
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         Pedido p= new Pedido();
-        p.setEstado("Pendiente");
-        p.setId_cliente(id_cliente);
+        p.setEstado(estado);
+        p.setId_cliente("dlara@espol.edu.ec");
         //p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());
         p.setLatitud(lat);
         p.setLongitud(longitud);
-        p.setNombreTienda(nombreTienda);
         referencia.child("pedidos").child(UUID.randomUUID().toString()).setValue(p);
         Toast.makeText( this, "Compra realizada exitosamente", Toast.LENGTH_SHORT ).show();
         finish();

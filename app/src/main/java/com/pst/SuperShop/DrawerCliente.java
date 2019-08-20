@@ -32,7 +32,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class DrawerCliente extends AppCompatActivity
@@ -52,8 +51,6 @@ public class DrawerCliente extends AppCompatActivity
     DatabaseReference reference;
     private FragmentTiendas fragmentTiendas;
     private pedidosCliente fragmentPedidos;
-    private TextView emailTV;
-    private String user_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +60,6 @@ public class DrawerCliente extends AppCompatActivity
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        emailTV = (TextView) findViewById(R.id.emailTextview);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open_cliente, R.string.navigation_drawer_close_cliente);
         drawer.addDrawerListener(toggle);
@@ -96,7 +92,7 @@ public class DrawerCliente extends AppCompatActivity
         // inicializar conexion firebase
         inicializarFirebase();
 
-        fragmentTiendas = new FragmentTiendas(reference, user_email);
+        fragmentTiendas = new FragmentTiendas(reference);
         fragmentPedidos = new pedidosCliente(reference);
 
 
@@ -113,8 +109,6 @@ public class DrawerCliente extends AppCompatActivity
 
     private void setUserData(FirebaseUser user) {
         // TODO: Setear usuario e id cliente
-        user_email = user.getEmail();
-        emailTV.setText(user_email);
     }
 
     private void inicializarFirebase() {
@@ -208,7 +202,7 @@ public class DrawerCliente extends AppCompatActivity
     }
 
     private void goLogInScreen() {
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
