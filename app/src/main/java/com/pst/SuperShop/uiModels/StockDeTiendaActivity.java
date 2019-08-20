@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,9 @@ public class StockDeTiendaActivity extends AppCompatActivity {
     private List<DatosItem> listItemsSelected = new ArrayList<DatosItem>();
     private RecyclerView mRecyclerView;
     private DatabaseReference reference;
+    private String logoUrl;
+    String nombreTienda;
+    private Context context;
 
 
     @Override
@@ -50,8 +54,8 @@ public class StockDeTiendaActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(null);
 
-        final String logoUrl = getIntent().getStringExtra("URL_LOGO");
-        final String nombreTienda = getIntent().getStringExtra("NOMBRE_TIENDA");
+        logoUrl = getIntent().getStringExtra("URL_LOGO");
+        nombreTienda = getIntent().getStringExtra("NOMBRE_TIENDA");
         final String uidTienda = getIntent().getStringExtra("UID_TIENDA");
 
 
@@ -111,6 +115,8 @@ public class StockDeTiendaActivity extends AppCompatActivity {
             Toast.makeText( this, "No posee productos seleccionados", Toast.LENGTH_SHORT ).show();
         }else{
             i.putExtra("itemsSelecccionados", (Serializable) listItemsSelected);
+            i.putExtra("NOMBRETIENDA",(Serializable) nombreTienda);
+            i.putExtra("URL_LOGO1",(Serializable) logoUrl);
             startActivity(i);
         }
     }

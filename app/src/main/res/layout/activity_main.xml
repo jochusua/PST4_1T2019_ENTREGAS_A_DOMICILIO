@@ -30,7 +30,7 @@
         <ImageView
             android:id="@+id/profile_pic_view"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="208dp"
             app:srcCompat="@drawable/vengadores_login" />
 
         <EditText
@@ -57,7 +57,7 @@
             android:id="@+id/checkBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Conductor" />
+            android:text="MODO REPARTIDOR" />
 
         <Button
             android:id="@+id/blogin"
@@ -77,7 +77,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="68dp"
             android:gravity="center">
 
             <com.google.android.gms.common.SignInButton
