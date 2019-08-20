@@ -1,5 +1,7 @@
 package com.pst.SuperShop.models;
 
+import java.time.LocalDateTime;
+
 public class Pedido {
 
     private String id_cliente;
@@ -9,6 +11,7 @@ public class Pedido {
     private String uid;
     private String estado;
     private String nombreTienda;
+    private String fecha;
 
 
     public String getEstado() {
@@ -25,6 +28,14 @@ public class Pedido {
 
     public void setNombreTienda(String nombreTienda) {
         this.nombreTienda = nombreTienda;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public Pedido() {

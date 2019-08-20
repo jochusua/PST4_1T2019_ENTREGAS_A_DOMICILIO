@@ -31,6 +31,8 @@ import com.pst.SuperShop.models.Pedido;
 import com.pst.SuperShop.models.Usuario;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -106,12 +108,15 @@ public class shoppingCart extends AppCompatActivity {
         finish();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void comprar(View view) {
         Intent i = new Intent(this, compraRealizada.class );
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         Pedido p= new Pedido();
         p.setEstado(estado);
         p.setNombreTienda(nombreTienda);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        p.setFecha(LocalDateTime.now().format(formatter));
         p.setId_cliente("dlara@espol.edu.ec");
         //p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());
