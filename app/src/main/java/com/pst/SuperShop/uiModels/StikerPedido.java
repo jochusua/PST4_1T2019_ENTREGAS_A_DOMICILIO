@@ -49,7 +49,7 @@ public class StikerPedido extends RecyclerView.Adapter<StikerPedido.MyViewHolder
 
         String pre= Double.toString(pedidos.getPrecio());
         holder.identificacion.setText("Cliente: "+pedidos.getId_cliente());
-        holder.precio.setText("Precio: "+pre);
+        holder.precio.setText("Tienda: "+pedidos.getNombreTienda()+"      Precio: "+pre);
         holder.estado.setText(pedidos.getEstado());
 
         if (pedidos.getEstado().equalsIgnoreCase("pendiente")){

@@ -45,8 +45,9 @@ public class shoppingCart extends AppCompatActivity {
     double lat;
     double longitud;
     String estado="Pendiente";
-
+    String nombreTienda;
     String usuario;
+    String logoUrl;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -62,7 +63,8 @@ public class shoppingCart extends AppCompatActivity {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(mAdapter);
 
-        final String logoUrl = getIntent().getStringExtra("URL_LOGO1");
+        logoUrl = getIntent().getStringExtra("URL_LOGO1");
+        nombreTienda = getIntent().getStringExtra("NOMBRETIENDA");
 
         Glide.with(this)
                 .load(logoUrl)
@@ -109,6 +111,7 @@ public class shoppingCart extends AppCompatActivity {
         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         Pedido p= new Pedido();
         p.setEstado(estado);
+        p.setNombreTienda(nombreTienda);
         p.setId_cliente("dlara@espol.edu.ec");
         //p.setId_cliente(usuario);
         p.setPrecio(totalPrecio());

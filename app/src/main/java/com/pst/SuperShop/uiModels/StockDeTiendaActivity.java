@@ -35,6 +35,7 @@ public class StockDeTiendaActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private DatabaseReference reference;
     private String logoUrl;
+    String nombreTienda;
     private Context context;
 
 
@@ -53,8 +54,8 @@ public class StockDeTiendaActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setAdapter(null);
 
-        String logoUrl = getIntent().getStringExtra("URL_LOGO");
-        final String nombreTienda = getIntent().getStringExtra("NOMBRE_TIENDA");
+        logoUrl = getIntent().getStringExtra("URL_LOGO");
+        nombreTienda = getIntent().getStringExtra("NOMBRE_TIENDA");
         final String uidTienda = getIntent().getStringExtra("UID_TIENDA");
 
 
@@ -114,6 +115,7 @@ public class StockDeTiendaActivity extends AppCompatActivity {
             Toast.makeText( this, "No posee productos seleccionados", Toast.LENGTH_SHORT ).show();
         }else{
             i.putExtra("itemsSelecccionados", (Serializable) listItemsSelected);
+            i.putExtra("NOMBRETIENDA",(Serializable) nombreTienda);
             i.putExtra("URL_LOGO1",(Serializable) logoUrl);
             startActivity(i);
         }
