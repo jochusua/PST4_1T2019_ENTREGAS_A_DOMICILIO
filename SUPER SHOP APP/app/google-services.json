@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "609876464204",
+    "firebase_url": "https://entregas-domicilio.firebaseio.com",
+    "project_id": "entregas-domicilio",
+    "storage_bucket": "entregas-domicilio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609876464204:android:f06a4cc59bbe9f33",
+        "android_client_info": {
+          "package_name": "com.pst.SuperShop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609876464204-ntj0cmknf5lks8qek9q6bp4cdjndipbt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pst.SuperShop",
+            "certificate_hash": "78cee4cd7bc940cd0b8a7f5abb619d37f80090d9"
+          }
+        },
+        {
+          "client_id": "609876464204-dsrdrhs79vmpb3aal5qu0677s9d6e6eq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pst.SuperShop",
+            "certificate_hash": "7c61b12e37915aea305a65f0e14cf4e58ac0f3e2"
+          }
+        },
+        {
+          "client_id": "609876464204-j77ah6417i40ijbndj41rvfs7m4pchik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi9Q3jO8VDkZ1Ui5hbX_U0tNP0N8fJgYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609876464204-j77ah6417i40ijbndj41rvfs7m4pchik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
