@@ -8,8 +8,17 @@ import 'package:flutter/cupertino.dart';
 
 void main() => runApp(EcommerceTwoPage());
 
-class EcommerceTwoPage extends StatelessWidget {
-  static final String path = "lib/src/pages/ecommerce/ecommerce2.dart";
+class EcommerceTwoPage extends StatefulWidget {
+  const EcommerceTwoPage({Key key}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() => _EcommerceTwoPageState();
+}
+
+class _EcommerceTwoPageState extends State<EcommerceTwoPage> {
+  //static final String path = "lib/src/pages/ecommerce/ecommerce2.dart";
+  int _currentTabIndex = 0;
+
+  // items used for primary page
   final List<Map> items = [
     {
       "title": "Kappa Velour",
@@ -36,6 +45,17 @@ class EcommerceTwoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // pages used for bottom navigation bar
+    final _kTabPages = <Widget>[
+        ListView.builder(
+              itemBuilder: _buildListView,
+              itemCount: items.length + 1,
+            ),
+        Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
+        Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
+        Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
+        Center(child: Icon(Icons.adb, size: 64.0, color: Colors.blue)),
+    ];
     return MaterialApp(
         title: 'MiniEcommerce',
         home: Scaffold(
@@ -73,11 +93,7 @@ class EcommerceTwoPage extends StatelessWidget {
             centerTitle: true,
             bottom: _buildBottomBar(),
           ),
-          body: SafeArea(
-              child: ListView.builder(
-            itemBuilder: _buildListView,
-            itemCount: items.length + 1,
-          )),
+          body: _kTabPages[_currentTabIndex],
           bottomNavigationBar: _buildBottomNavigationBar(),
         ));
   }
@@ -96,9 +112,14 @@ class EcommerceTwoPage extends StatelessWidget {
         BottomNavigationBarItem(
             icon: Icon(Icons.settings), title: Text("Settings")),
       ],
-      currentIndex: 0,
+      currentIndex: _currentTabIndex,
       type: BottomNavigationBarType.fixed,
       fixedColor: Colors.red,
+      onTap: (int index) {
+        setState(() {
+          _currentTabIndex = index;
+        });
+      },
     );
   }
 
