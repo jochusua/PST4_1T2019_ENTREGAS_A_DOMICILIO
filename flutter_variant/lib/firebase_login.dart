@@ -30,10 +30,10 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   @override
   Widget build(BuildContext context) {
     final statusText = Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(_user == null
           ? 'You are not logged in.'
-          : 'You are logged in as "${_user.displayName}".'),
+          : 'You are logged in as "${_user.displayName}".'), // NOTE: here can go to main screen
     );
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
@@ -96,7 +96,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     );
     // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
     final user = await kFirebaseAuth.signInWithCredential(credential);
-    kFirebaseAnalytics.logLogin();
+    //kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);
     return user;
   }
@@ -116,7 +116,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     // Have to re-call kFirebaseAuth.currentUser() to make `updateProfile` work.
     // C.f. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
     final user = await kFirebaseAuth.currentUser();
-    kFirebaseAnalytics.logLogin();
+    //kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);
     return user;
   }
