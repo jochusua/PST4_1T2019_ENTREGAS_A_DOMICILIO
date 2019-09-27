@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-void main() => runApp(EcommerceTwoPage());
+void main() => runApp(new MaterialApp( home: EcommerceTwoPage()));
 
 class EcommerceTwoPage extends StatefulWidget {
   const EcommerceTwoPage({Key key}) : super(key: key);
@@ -47,18 +47,16 @@ class _EcommerceTwoPageState extends State<EcommerceTwoPage> {
   Widget build(BuildContext context) {
     // pages used for bottom navigation bar
     final _kTabPages = <Widget>[
-        ListView.builder(
-              itemBuilder: _buildListView,
-              itemCount: items.length + 1,
-            ),
-        Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
-        Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
-        Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
-        Center(child: Icon(Icons.adb, size: 64.0, color: Colors.blue)),
+      ListView.builder(
+        itemBuilder: _buildListView,
+        itemCount: items.length + 1,
+      ),
+      Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
+      Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
+      Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
+      Center(child: Icon(Icons.adb, size: 64.0, color: Colors.blue)),
     ];
-    return MaterialApp(
-        title: 'MiniEcommerce',
-        home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
             actions: <Widget>[
@@ -95,7 +93,7 @@ class _EcommerceTwoPageState extends State<EcommerceTwoPage> {
           ),
           body: _kTabPages[_currentTabIndex],
           bottomNavigationBar: _buildBottomNavigationBar(),
-        ));
+        );
   }
 
   Widget _buildBottomNavigationBar() {
@@ -170,22 +168,30 @@ class _EcommerceTwoPageState extends State<EcommerceTwoPage> {
       child: Row(
         children: <Widget>[
           Expanded(
-              child: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(item["image"]), fit: BoxFit.cover),
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(5.0, 5.0),
-                      blurRadius: 10.0)
-                ]),
-          )),
+              child: GestureDetector(
+                  child: Hero(
+                      tag: item['title'], // tag must be unique!!
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(item["image"]),
+                                fit: BoxFit.cover),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10.0)),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(5.0, 5.0),
+                                  blurRadius: 10.0)
+                            ]),
+                      )),
+                  onTap: () => _showImage(context, item['image'], item['title'])
+                      )),
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20.0),
-              child: SingleChildScrollView(child: Column(
+              child: SingleChildScrollView(
+                  child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
@@ -231,5 +237,18 @@ class _EcommerceTwoPageState extends State<EcommerceTwoPage> {
         ],
       ),
     );
+  }
+
+  void _showImage(BuildContext context, String imagePath, String tagged) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (ctx) => Container(
+          color: Colors.transparent,
+          child: Hero(
+              tag: tagged,
+              child: Image.asset(imagePath)
+              )
+          )
+        ));
   }
 }
